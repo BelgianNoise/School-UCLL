@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Yahtzee</title>
+    <script src="bundle.js"></script>
+    <script src="student.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+    <style>
+      #rules {
+        margin: 1em auto;
+        border-collapse: collapse;
+      }
+
+      #rules th {
+        border-bottom: 1px solid black;
+      }
+      
+      #rules tr td:first-child {
+        font-weight: bold;
+      }
+
+      #rules td {
+        padding: 0.2em 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Yahtzee</h1>
+      <div id="commands"></div>
+      <span class="exercise-total-score"></span>
+    </header>
+    <aside>
+      <div id="exercise-overview"></div>
+      <div id="exercise-overview-collapser"></div>
+    </aside>
+    <div id="contents">
+      <section class="explanation">
+        <header>
+          <h1>Het Spel Yahtzee</h1>
+          <p>
+            Yahtzee is een dobbelspel waarbij spelers met vijf dobbelstenen
+            bepaalde combinaties probeert te vormen. Elke combinatie levert een aantal punten op.
+            Het is jouw taak om functies te schrijven die de combinaties herkennen en
+            er punten aan toekennen.
+          </p>
+          <table id="rules">
+            <tbody>
+              <tr>
+                <th></th>
+                <th>Beschrijving</th>
+                <th>Voorbeeld</th>
+                <th>Punten</th>
+              </tr>
+              <tr>
+                <td>1'en</td>
+                <td>Zoveel mogelijk <span class="raw-dice">1</span>'en</td>
+                <td><span class="raw-dice">1 4 1 1 2</span></td>
+                <td>Som van <span class="raw-dice">1</span>'en</td>
+              </tr>
+              <tr>
+                <td>2'en</td>
+                <td>Zoveel mogelijk <span class="raw-dice">2</span>en</td>
+                <td><span class="raw-dice">2 4 2 2 2</span></td>
+                <td>Som van <span class="raw-dice">2</span>'en</td>
+              </tr>
+              <tr>
+                <td>3'en</td>
+                <td>Zoveel mogelijk <span class="raw-dice">3</span>en</td>
+                <td><span class="raw-dice">4 2 3 3 3</span></td>
+                <td>Som van <span class="raw-dice">3</span>'en</td>
+              </tr>
+              <tr>
+                <td>4'en</td>
+                <td>Zoveel mogelijk <span class="raw-dice">4</span>en</td>
+                <td><span class="raw-dice">4 4 4 4 4</span></td>
+                <td>Som van <span class="raw-dice">4</span>'en</td>                
+              </tr>
+              <tr>
+                <td>5'en</td>
+                <td>Zoveel mogelijk <span class="raw-dice">5</span>en</td>
+                <td><span class="raw-dice">1 5 4 5 5</span></td>
+                <td>Som van <span class="raw-dice">5</span>'en</td>
+              </tr>
+              <tr>
+                <td>6'en</td>
+                <td>Zoveel mogelijk <span class="raw-dice">6</span>en</td>
+                <td><span class="raw-dice">6 6 6 1 1</span></td>
+                <td>Som van <span class="raw-dice">6</span>'en</td>
+              </tr>
+              <tr>
+                <td>Drie gelijke</td>
+                <td>Drie gelijke dobbelstenen</td>
+                <td><span class="raw-dice">3 5 1 5 5</span></td>
+                <td>Som alle dobbelstenen</td>
+              </tr>
+              <tr>
+                <td>Vier gelijke</td>
+                <td>Vier gelijke dobbelstenen</td>
+                <td><span class="raw-dice">2 4 2 2 2</span></td>
+                <td>Som alle dobbelstenen</td>
+              </tr>
+              <tr>
+                <td>Full House</td>
+                <td>Drie gelijke en twee gelijke</td>
+                <td><span class="raw-dice">1 1 2 3 4</span></td>
+                <td>25</td>
+              </tr>
+              <tr>
+                <td>Kleine straat</td>
+                <td>Vier oplopende</td>
+                <td><span class="raw-dice">1 1 2 3 4</span></td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>Grote straat</td>
+                <td>Vijf oplopende</td>
+                <td><span class="raw-dice">2 3 4 5 6</span></td>
+                <td>40</td>
+              </tr>
+              <tr>
+                <td>Yahtzee</td>
+                <td>Vijf gelijke</td>
+                <td><span class="raw-dice">3 3 3 3 3</span></td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>Kans</td>
+                <td>Willekeurig</td>
+                <td><span class="raw-dice">4 1 1 2 5</span></td>
+                <td>Som alle dobbelstenen</td>
+              </tr>
+            </tbody>
+          </table>
+        </header>
+      </section>
+
+      <section class="category">
+        <header>
+          <h1>Hulpfuncties</h1>
+        </header>
+        <section class="coding exercise" data-exercise-name="zeros" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">zeros(n)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>zeros(n)</code> die een array van <code>n</code> lang
+              produceert, gevuld met <code>0</code>'en.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="contains" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">contains(xs, x)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>contains(xs, x)</code> die, gegeven een array <code>xs</code>
+              en een waarde <code>x</code>, nagaat of <code>x</code> voorkomt in <code>xs</code>.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="removeDuplicates" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">removeDuplicates(xs)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>removeDuplicates(xs)</code> die, gegeven een array <code>xs</code>,
+              alle gedupliceerde elementen verwijdert. Van elk element moet enkel het eerst voorkomende overblijven.
+              Bijvoorbeeld, <code>[1, 2, 1]</code> moet leiden tot <code>[1, 2]</code>, niet <code>[2, 1]</code>.
+              Voor de rest moet de volgorde van de elementen behouden worden.
+            </p>
+          </div>
+        </section>
+        
+        <section class="coding exercise" data-exercise-name="containsElementAtLeast" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">containsElementAtLeast(ns, minimum)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>containsElementAtLeast(ns, minimum)</code> die,
+              gegeven een array getallen <code>ns</code> en een getal <code>minimum</code>,
+              nagaat of er een element in <code>ns</code> zit dat minstens even groot is als
+              <code>minimum</code>.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="deltas" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">deltas(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>deltas(ns)</code> die, gegeven een array getallen <code>ns</code>,
+              een nieuwe array produceert die de verschillend tussen opeenvolgende elementen van
+              <code>ns</code> bevat. Bijvoorbeeld, indien <code>ns = [1, 1, 2, 4, 10]</code>,
+              dan moet het resultaat <code>[1 - 1, 2 - 1, 4 - 2, 10 - 4]</code> of dus
+              <code>[0, 1, 2, 6]</code> zijn.
+            </p>
+          </div>
+        </section>
+        
+        <section class="coding exercise" data-exercise-name="sum" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">sum(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>sum(ns)</code> die, gegeven een array getallen <code>ns</code>,
+              de som ervan uitrekent.
+            </p>
+          </div>
+        </section>
+        
+        <section class="coding exercise" data-exercise-name="allEqualTo" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">allEqualTo(xs, x)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>allEqualTo(xs, x)</code> die nagaat
+              of alle elementen uit de array <code>xs</code> gelijk zijn aan <code>x</code>.
+            </p>
+          </div>
+        </section>
+        
+        <section class="coding exercise" data-exercise-name="diceCounts" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">diceCounts(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>diceCounts(ns)</code>, die gegeven een array dobbelsteenwaarden
+              <code>ns</code> (d.i. getallen tussen 1 en 6), telt hoe vaak elke waarde voorkomt.
+              Het resultaat wordt teruggegeven als een array van zes getallen
+              waarvan het eerste aangeeft hoeveel <span class="raw-dice">1</span>'en er waren, etc.
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <section class="category">
+        <header>
+          <h1>Herkenningsfuncties</h1>
+        </header>
+
+        <section class="coding exercise" data-exercise-name="threeOfAKind" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">threeOfAKind(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>threeOfAKind(ns)</code> die, gegeven een array
+              van vijf dobbelsteenwaarden, nagaat of er drie gelijke waarden tussen zitten.
+            </p>
+            <p>
+              Maak gebruik van de eerder gedefinieerde hulpfuncties! Je kan
+              deze functie dan met &eacute;&eacute;n lijn code implementeren.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="fourOfAKind" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">fourOfAKind(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>threeOfAKind(ns)</code> die, gegeven een array
+              van vijf dobbelsteenwaarden, nagaat of er vier gelijke waarden tussen zitten.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="yahtzee" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">yahtzee(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>threeOfAKind(ns)</code> die, gegeven een array
+              van vijf dobbelsteenwaarden, nagaat of alle waarden aan elkaar gelijk zijn.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="fullHouse" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">fullHouse(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>threeOfAKind(ns)</code> die, gegeven een array
+              van vijf dobbelsteenwaarden, nagaat of ze een full house vormen.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="smallStraight" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">smallStraight(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>threeOfAKind(ns)</code> die, gegeven een array
+              van vijf dobbelsteenwaarden, nagaat of ze een kleine straat vormen.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="largeStraight" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">largeStraight(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>threeOfAKind(ns)</code> die, gegeven een array
+              van vijf dobbelsteenwaarden, nagaat of ze een grote straat vormen.
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <section class="category">
+        <header>
+          <h1>Scorefuncties</h1>
+        </header>
+
+        <section class="coding exercise" data-exercise-name="scoreAsN" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">scoreAsN(ns, n)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>scoreAsN(ns, n)</code> die,
+              gegeven een array dobbelsteenwaarden <code>ns</code> en een dobbelsteenwaarde <code>n</code>,
+              telt hoe vaak <code>n</code> voorkomt in <code>ns</code> en dit vermenigvuldigt met <code>n</code>.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="scoreAsThreeOfAKind" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">scoreAsThreeOfAKind(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>scoreAsThreeOfAKind(ns)</code> die,
+              gegeven een array dobbelsteenwaarden <code>ns</code>,
+              indien <code>ns</code> drie gelijke waarden bevat het totaal aantal ogen teruggeeft,
+              zoniet <code>0</code>.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="scoreAsFourOfAKind" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">scoreAsFourOfAKind(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>scoreAsFourOfAKind(ns)</code> die,
+              gegeven een array dobbelsteenwaarden <code>ns</code>,
+              indien <code>ns</code> vier gelijke waarden bevat het totaal aantal ogen teruggeeft,
+              zoniet <code>0</code>.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="scoreAsFullHouse" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">scoreAsFullHouse(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>scoreAsFullHouse(ns)</code> die,
+              indien de gegeven array dobbelsteenwaarden <code>ns</code> een
+              full house vormt, 25 teruggeeft, zoniet 0.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="scoreAsSmallStraight" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">scoreAsSmallStraight(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>scoreAsFullHouse(ns)</code> die,
+              indien de gegeven array dobbelsteenwaarden <code>ns</code> een
+              kleine straat vormt, 30 teruggeeft, zoniet 0.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="scoreAsLargeStraight" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">scoreAsLargeStraight(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>scoreAsFullHouse(ns)</code> die,
+              indien de gegeven array dobbelsteenwaarden <code>ns</code> een
+              grote straat vormt, 40 teruggeeft, zoniet 0.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="scoreAsYahtzee" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">scoreAsYahtzee(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>scoreAsYahtzee(ns)</code> die,
+              gegeven een array dobbelsteenwaarden <code>ns</code>,
+              indien alle waarden in <code>ns</code> gelijk zijn aan elkaar, 50 teruggeeft,
+              zoniet <code>0</code>.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="scoreAsChance" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">scoreAsChance(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>scoreAsChance(ns)</code> die de totale som der ogen teruggeeft.
+            </p>
+          </div>
+        </section>
+      </section>
+    </div>
+  </body>
+</html>

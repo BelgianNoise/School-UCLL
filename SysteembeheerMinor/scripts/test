@@ -1,0 +1,11 @@
+#! /bin/bash
+
+while getopts "t:" opt; do
+	case $opt in
+		t) TEST=$OPTARG      ;;
+		*) echo 'error' >&2
+	           exit 1
+	esac
+done
+
+echo "$TEST"

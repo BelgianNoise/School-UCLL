@@ -1,0 +1,14 @@
+locale-gen en_US.UTF-8
+locale-gen nl_BE.UTF-8
+
+update-locale en_US.UTF-8
+
+update-locale LC_CTYPE="en_US.UTF-8"
+=== en alle andere in het engels ===
+
+update-locale LC_PAPER=nl_BE.UTF-8
+=== en alle andere in het nederlands ====
+
+ge kunt het ook allemaal typen in : /etc/default/locale
+
+als da ni direct zichtbaar is met "locale" dan moet ge is "reboot" doen

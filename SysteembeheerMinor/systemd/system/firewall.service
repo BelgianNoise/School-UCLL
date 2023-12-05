@@ -1,0 +1,14 @@
+[Unit]
+Description=Firewall
+# Start before Network Interfaces coming up
+Before=network-pre.target
+Wants=network-pre.target
+After=local-fs.target
+# Do not start after basic.target!
+DefaultDependencies=no
+[Service]
+ExecStart=/etc/init.d/firewall start
+ExecStop=/etc/init.d/firewall stop
+# Just Execute the shell script
+Type=oneshot
+RemainAfterExit=yes

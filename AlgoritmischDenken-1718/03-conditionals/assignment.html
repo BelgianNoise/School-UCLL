@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Conditionals</title>
+    <script src="bundle.js"></script>
+    <script src="student.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+    
+    <style>
+      .dice {
+        font-size: 1.5em;
+      }
+
+      .rock-paper-scissors {
+        margin: 10px auto;
+        border-collapse: collapse;
+      }
+
+      .rock-paper-scissors th {
+        background: #DDD;
+        padding: 0.2em 1em;
+      }
+
+      .rock-paper-scissors td {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Conditionals</h1>
+      <div id="commands"></div>
+      <span class="exercise-total-score"></span>
+    </header>
+    <aside>
+      <div id="exercise-overview"></div>
+      <div id="exercise-overview-collapser"><span>&#9658;</span></div>
+    </aside>
+    <div id="contents">
+      <section class="explanation">
+        <header>
+          <h1>De <code>if</code>-statement</h1>
+        </header>
+        <p>
+          Een programma moet zich meestal aanpassen aan de omstandigheden:
+          bepaalde stukken code moeten enkel onder bepaalde omstandigheden
+          uitgevoerd worden:
+        </p>
+        <ul>
+          <li>
+            Transportkosten worden aangerekend <strong>indien</strong> de som van alle gekochte artikelen kleiner is dan een bepaald bedrag.
+          </li>
+          <li>
+            <strong>Indien</strong> de muisklikpositie valt binnen het gebied afgebakend door de printknop moet het document afgeprint worden.
+          </li>
+          <li>
+            <strong>Indien</strong> een venster niet overlapt wordt door een ander moet de inhoud ervan getekend is.
+          </li>
+        </ul>
+        <p>
+          Quasi elke programmeertaal biedt een manier aan om voorwaardes uit te drukken. Deze neemt doorgaans de vorm aan van een <code>if</code>-statement.
+          In Javascript ziet deze er als volgt uit:
+        </p>
+        <text-area class="raw-source" data-source-function="ifExample"></text-area>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="abs">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="clamp">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="overlappingIfs">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="tShirts" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">tShirts(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je wil t-shirts laten drukken. Per t-shirt betaal je &euro;10. Als je 10 of meer t-shirts laat drukken, krijg je
+            &euro;5 korting. Schrijf een functie <code>tShirts(n)</code> die, gegeven een aantal t-shirts <code>n</code>,
+            teruggeeft hoeveel je moet betalen.
+          </p>
+        </div>
+      </section>
+
+      <section class="explanation">
+        <header>
+          <h1><code>else</code></h1>
+        </header>
+        <p>
+          De <code>if</code> laat ons toe instructies enkel uit te voeren indien een conditie waar is.
+          Wat als we willen dat er andere code uitgevoerd wordt indien de conditie niet waar is?
+        </p>
+        <p>
+          Beschouw bijvoorbeeld de prijsberekening
+          "indien het totaalbedrag onder de &euro;50 valt, wordt er &euro;5 transportkosten aangerekend,
+          anders slechts &euro;2."
+          Met de <code>if</code>-statement zou men dit als volgt kunnen neerschrijven:
+        </p>
+        <text-area class="raw-source" data-source-function="ifElseExample"></text-area>
+        <p>
+          Hoewel deze aanpak zal werken, is deze codeerstijl afgeraden:
+        </p>
+        <ul>
+          <li>
+            Dezelfde conditie komt in twee vormen voor (<code>totalCost &lt; 50</code>
+            en <code>totalCost &gt;= 50</code>). Dit maakt de code fragieler: als je deze moet wijzigen, moet je immers niet vergeten de code
+            op twee plekken te wijzigen i.p.v. op een enkele. Hoewel dit in deze situatie misschien overdreven pedant lijkt,
+            kunnen we je verzekeren dat je in de toekomst zal vloeken als je merkt dat bepaalde stukken code meermaals herhaald
+            wordt en je alle voorkomens moet beginnen zoeken. Het over het hoofd zien van zo een voorkomen is een grote bron van bugs.
+          </li>
+          <li>
+            Het is korter om "Indien kleiner dan &euro;50, dan &euro;5 transportkosten, <strong>anders</strong> &euro;2" te schrijven.
+          </li>
+          <li>
+            Als je tweemaal vergelijkt, zal de computer de getallen ook tweemaal vergelijken. Dit is onnodig oneffici&euml;nt.
+          </li>
+        </ul>
+        <p>
+          Men kan hier beter gebruik maken van de <code>else</code>-constructie:
+        </p>
+        <text-area class="raw-source" data-source-function="ifElseExample2"></text-area>
+        <p>
+          De <code>if</code>-statement laat dus toe om op basis van een gegeven conditie verschillende instructies te laten uitvoeren.
+        </p>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="abs2">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="tShirts2" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">tShirts2(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je wil t-shirts laten drukken.
+          </p>
+          <ul>
+            <li>
+              Per t-shirt kost het &euro;10.
+            </li>
+            <li>
+              Als je er minstens 100
+              bestelt, krijg je korting en kost het slechts &euro;9 per t-shirt.
+            </li>
+          </ul>
+          <p>
+            Schrijf een functie <code>tShirts2(n)</code> die, gegeven het aantal bestelde
+            t-shirts <code>n</code>, uitrekent hoeveel het je in totaal kost.
+          </p>
+        </div>
+      </section>
+
+      <section class="explanation">
+        <header>
+          <h1><code>if</code>-ketting</h1>
+        </header>
+        <p>
+          De <code>if-else</code> constructie stelt een tweesprong voor in het executiepad: het ene pad wordt afgegaan
+          indien de gegeven conditie waar is, zoniet wordt het andere pad gevolgd. Wat als we meer dan twee paden willen?
+        </p>
+        <p>
+          Bijvoorbeeld, stel dat de transportkost als volgt berekend wordt:
+        </p>
+        <ul>
+          <li>
+            Indien het totaalbedrag kleiner is dan &euro;50, wordt &euro;10 aan transportkosten aangerekend.
+          </li>
+          <li>
+            Indien het totaalbedrag tussen de &euro;50 en &euro;100 valt, wordt &euro;5 aan transportkosten aangerekend.
+          </li>
+          <li>
+            Vanaf &euro;100 worden de transportkosten &euro;2.
+          </li>
+        </ul>
+        <p>
+          Om deze driesprong te implementeren, kunnen we een <code>if-else</code> ketting opbouwen:
+        </p>
+        <text-area class="raw-source" data-source-function="ifChainExample"></text-area>
+        <p>
+          Belangrijk hierbij is dat ongeacht het aantal vertakkingen in de <code>if-else</code> ketting,
+          er zal altijd maar &eacute;&eacute;n vertakking uitgevoerd worden, namelijk de eerste waarvoor de bijhorende
+          conditie waar is.
+        </p>
+      </section>
+      
+      <section class="interpretation exercise" data-exercise-name="chainedIfs">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="nonoverlappingIfs">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="tShirts3" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">tShirts3(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je wil t-shirts laten drukken.
+          </p>
+          <ul>
+            <li>
+              Per t-shirt kost het &euro;10.
+            </li>
+            <li>
+              Als je er meer dan 100 bestelt, krijg je korting en kost het slechts &euro;9 per t-shirt.
+            </li>
+            <li>
+              Als je er meer dan 500 bestelt, krijg je korting en kost het slechts &euro;8 per t-shirt.
+            </li>
+          </ul>
+          <p>
+            Schrijf een functie <code>tShirts3(n)</code> die, gegeven het aantal bestelde
+            t-shirts <code>n</code>, uitrekent hoeveel het je in totaal kost.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="towerDefense" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">towerDefense(ex, ey, vx, vy, tx, ty, s)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Een belangrijke les is om zich niet te laten intimideren door de schijnbare complexiteit van een opgave.
+          </p>
+          <p>
+            In Tower Defense schieten torens pijlen naar bewegende vijanden.
+            Een pijl beweegt zich echter relatief traag voort.
+            Indien de toren zijn pijlen afschiet in de richting van de vijand,
+            dan zal tegen de tijd dat de pijl aankomt de vijand zich al verder verplaatst hebben.
+            Een toren moet hiervoor dus compenseren en schieten in de richting
+            waar de vijand <strong>zal</strong> zijn.
+          </p>
+          <p>
+            We hebben de volgende parameters:
+          </p>
+          <ul>
+            <li>
+              De positie van de vijand: $(e_\mathrm{x}, e_\mathrm{y})$.
+            </li>
+            <li>
+              De snelheid en richting van de vijand: $(v_\mathrm{x}, v_\mathrm{y})$.
+            </li>
+            <li>
+              De positie van de toren: $(t_\mathrm{x}, t_\mathrm{y})$.
+            </li>
+            <li>
+              De snelheid van de pijlen: $s$.
+            </li>
+          </ul>
+          <p>
+            Om uit te rekenen in welke richting de toren zijn pijl moet afschieten,
+            voer je de volgende stappen uit:
+          </p>
+          <ol>
+            <li>
+              Reken uit:
+              \[
+                \begin{array}{rcl}
+                  a & = & v_\mathrm{x}^2 + v_\mathrm{y}^2-s^2 \\ \\
+                  b & = & 2 \cdot (e_\mathrm{x} \cdot v_\mathrm{x} - t_\mathrm{x} \cdot v_\mathrm{x} +
+                                   (e_\mathrm{y} - t_\mathrm{y}) \cdot v_\mathrm{y}) \\ \\
+                  c & = & (e_\mathrm{x} - t_\mathrm{x})^2 + (e_\mathrm{y}-t_\mathrm{y})^2 \\ \\
+                \end{array}
+              \]
+            </li>
+            <li>
+              We moeten een waarde $t$ uitrekenen, maar hoe deze uitgerekend wordt hangt af van de waarde van $a$.
+              <ul>
+                <li>
+                  Indien $a = 0$, dan is $t = -\frac{c}{b}$. Indien $t < 0$, dan kan de toren de vijand niet raken.
+                </li>
+                <li>
+                  Indien $a \neq 0$:
+                  <ol>
+                    <li>
+                      Reken uit:
+                      \[                
+                        D = b^2 - 4 \cdot a \cdot c
+                      \]
+                    </li>
+                    <li>
+                      Indien $D &lt; 0$, dan kan de toren de vijand onmogelijk raken.
+                    </li>
+                    <li>
+                      Indien $D \geq 0$, reken uit:
+                      \[
+                        \begin{array}{rcl}
+                          t_1 & = & \displaystyle \frac{-b + \sqrt{D}}{2 \cdot a} \\ \\
+                          t_2 & = & \displaystyle \frac{-b - \sqrt{D}}{2 \cdot a} \\
+                        \end{array}
+                      \]
+                    </li>
+                    <li>
+                      Kies uit deze twee $t$-waarden de kleinste positieve. Dit is de waarde voor $t$.
+                      Indien zowel $t_1$ en $t_2$ negatief zijn, kan de toren de vijand niet raken.
+                    </li>
+                  </ol>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Reken uit:
+              \[
+                \begin{array}{rcl}
+                  p_\mathrm{x} & = & e_\mathrm{x} + v_\mathrm{x} \cdot t - t_\mathrm{x} \\ \\
+                  p_\mathrm{y} & = & e_\mathrm{y} + v_\mathrm{y} \cdot t - t_\mathrm{y} \\ \\
+                  d            & = & \sqrt{p_\mathrm{x}^2 + p_\mathrm{y}^2} \\ \\
+                  a_\mathrm{x} & = & \displaystyle \frac{p_\mathrm{x}}{d} \\ \\
+                  a_\mathrm{y} & = & \displaystyle \frac{p_\mathrm{y}}{d} \\ \\
+                  \theta       & = & \mathrm{atan2}(a_\mathrm{y}, a_\mathrm{x}) / \pi * 180
+                \end{array}
+              \]
+              $\mathrm{atan2}$ kan je uitrekenen met <code>Math.atan2</code>.
+              Voor $\pi$ gebruik je best <code>Math.PI</code>.
+            </li>
+          </ol>
+          <p>
+            Schrijf een functie <code>towerDefense(ex, ey, vx, vy, tx, ty, s)</code>
+            die $\theta$ uitrekent: deze geeft aan in welke richting de toren moet schieten
+            om de vijand te raken. Is er geen oplossing, dan moet de functie <code>-1</code>
+            teruggeven.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="max2" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">max2(x, y)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf je eigen versie van <code>Math.max</code> die werkt op twee parameters.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="max3" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">max3(x, y, z)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf je eigen versie van <code>Math.max</code> die werkt op drie parameters.
+            Je kan hiervoor gebruik maken van <code>max2</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="middle" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">middle(x, y, z)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>middle</code> die, gegeven drie
+            getallen <code>x</code>, <code>y</code> en <code>z</code>,
+            het "middelste" getal teruggeeft. Hiermee bedoelen we
+            het getal dat indien we <code>x</code>, <code>y</code> en <code>z</code>
+            sorteren, zich op de middelste plaats bevindt.
+          </p>
+        </div>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="yahtzee" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">yahtzee(a, b, c)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            We schrijven een variant op het spel Yahtzee.
+            Je werpt drie dobbelstenen. Je scoort dan punten als volgt:
+          </p>
+          <ul>
+            <li>
+              Drie keer hetzelfde getal levert 25 punten op.
+            </li>
+            <li>
+              Een stijgende rij (bv. <span class="dice">&#9857; &#9858; &#9859;</span>) levert 30 punten op.
+            </li>
+            <li>
+              Indien geen van deze patronen gevonden kan worden,
+              levert het de som van de dobbelsteenwaarden op.
+            </li>
+          </ul>
+          <p>
+            Merk op dat de volgorde van de dobbelstenen niets uitmaakt: <span class="dice">&#9856; &#9857; &#9858;</span>
+            levert evenveel punten op als <span class="dice">&#9858; &#9856; &#9857;</span>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="rockPaperScissors" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">rockPaperScissors(p1, p2)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Twee spelers <code>p1</code> en <code>p2</code> spelen blad-steen-schaar.
+            Schrijf een functie <code>rockPaperScissors(p1, p2)</code> die,
+            gegeven de keuzes van de twee spelers, uitrekent wie wint:
+          </p>
+          <table class="rock-paper-scissors">
+            <tbody>
+              <tr>
+                <th>Winnaar</th><th>Returnwaarde</th>
+              </tr>
+              <tr>
+                <td>Speler 1</td><td>1</td>
+              </tr>
+              <tr>
+                <td>Speler 2</td><td>2</td>
+              </tr>
+              <tr>
+                <td>Gelijkspel</td><td>0</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            De mogelijke keuzes blad, steen en schaar worden voorgesteld door getallen:
+          </p>
+          <table class="rock-paper-scissors">
+            <tbody>
+              <tr>
+                <th>Keuze</th><th>Getal</th>
+              </tr>
+              <tr>
+                <td>Blad</td><td>0</td>
+              </tr>
+              <tr>
+                <td>Steen</td><td>1</td>
+              </tr>
+              <tr>
+                <td>Schaar</td><td>2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="latest" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">latest(h1, m1, h2, m2)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>latest(h1, m1, h2, m2)</code> die, gegeven
+            twee tijdstippen <code>h1:m1</code> en <code>h2:m2</code> (uren:minuten),
+            nagaat welke van deze twee tijdstippen het laatst op de dag valt.
+            De functie hoort <code>1</code> terug te geven indien <code>h1:m1</code>
+            later valt dan <code>h2:m2</code> en <code>2</code> indien <code>h2:m2</code>
+            later valt dan <code>h1:m1</code>. Indien beide uren hetzelfde tijdstip voorstellen,
+            moet <code>0</code> teruggegeven worden.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="age" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">age(bd, bm, by, nd, nm, ny)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>age(by, bm, bd, ny, nm, nd)</code> die, gegeven
+            de geboortedatum <code>bd/bm/by</code> van een persoon en een huidige datum <code>nd/nm/ny</code>,
+            uitrekent wat de leeftijd is van die persoon in een geheel aantal jaren.
+          </p>
+          <p>
+            Bijvoorbeeld, stel dat de geboortedatum <code>5/5/2000</code> is
+            en de huidige datum <code>1/1/2020</code>, dan moet het resultaat 19 zijn (omdat de persoon
+            zijn verjaardag nog niet gevierd heeft in 2020.)
+          </p>
+        </div>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="coins" data-exercise-difficulty="3">
+        <header>
+          <h1 class="exercise-header">coins(c2, c5, goal)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je hebt een aantal muntstukken van &euro;2 en briefjes van &euro;5 ter beschikking, voorgesteld
+            door variabelen <code>c2</code> en <code>c5</code> respectievelijk.
+            Schrijf een functie <code>coins(c2, c5, goal)</code> die nagaat
+            of het mogelijk is het doelbedrag <code>goal</code> gepast te vormen gebruik makende
+            van de gegeven munten en briefjes.
+          </p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

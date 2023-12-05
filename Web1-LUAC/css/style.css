@@ -1,0 +1,400 @@
+html{
+    margin: auto;
+    background-color: #AAA;
+    background-size: 100%;
+    border: 2px solid white;
+    font-family: arial, sans-serif;
+    line-height: 1.4em;
+}
+
+header{
+    background-image: url(../img/bannerMobile.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    position: relative;
+    height: 300px;
+}
+header>h1{
+    text-indent: -99999px;
+    width: 20%;
+    height: 100%;
+    background-image: url(../img/luaclogo.gif);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    z-index: 99;
+}
+
+nav ul li a{
+    display:block;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    background-color: #EA0000;
+    border: 1px solid;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: arial, sans-serif;
+    box-sizing: border-box;
+}
+nav{
+    position: absolute;
+}
+
+nav ul li a.selected{
+    background-color:#920202;
+}
+/* probleem met navigatie voor mobiel */
+@media screen and (max-width: 775px){
+    nav{
+    left:0;
+    bottom: 0;
+    width:100%;
+    }
+    header>h1{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    }
+}
+
+nav ul li{
+    list-style-type: none;
+}
+nav, nav ul, nav ul li{
+    padding: 0;
+    margin: 0;
+}
+main {
+    font-family: "verdana", sans-serif;
+    position: relative;
+    border: 1px solid;
+    border-color: white;
+    background-color: #DDD;
+    line-height: 1.4em;
+}
+main, header{
+    margin: 0;
+    padding: 0;
+}
+footer{
+    background-color: #C6B27D;
+    padding: 10px;
+    margin: 0;
+    font-size: 1em;
+    position: relative;
+    font-family: "verdana", sans-serif;
+    line-height: 1.3em;
+}
+footer a{
+    text-decoration: none;
+    color: blue;
+}
+#fblink{
+    position: absolute;
+    width: 17%;
+    right: 5px;
+    top: 5px;
+}
+#fblink>img{
+    width: 100%;
+}
+strong{
+    font-weight: bold;
+}
+/* ALGEMEEN EINDE */
+
+/* HOME OPMAAK */
+#home main{
+    background-image: url(../img/home.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 386px;
+    line-height: 1.7em;
+}
+
+#knop{
+    display:block;
+    padding: 2%;
+    text-align: center;
+    background-color: #CC0000;
+    color: #fff;
+    width: 32%;
+    position: absolute;
+    top: 250px;
+    left: 32%;
+    border: 1px solid;
+    text-decoration: none;
+    line-height: 1.2em;
+}
+#home main h2{
+    font-family: arial, serif;
+    font-size: 1.4em;
+    align-self: center;
+    text-align: center;
+    color: white;
+    padding: 10px 7% 0;
+    margin: 0 10px;
+
+}
+
+#home main div{
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+/* HOME OPMAAK EINDE */
+
+/* WAT OPMAAK */
+#wat main article img{
+    width: 80%;
+    margin: auto;
+    display:block;
+    padding: 15px 0;
+}
+#wat main article{
+    margin: 10px;
+    padding: 8px;
+    background-color: white;
+}
+#wat main article h2{
+    font-weight: bold;
+    font-size: 130%;
+    line-height: 1.5em;
+}
+/* WAT OPMAAK EINDE */
+
+/* START TO FLY OPMAAK */
+#start main div article{
+    background-color: white;
+    margin: 12px;
+    padding: 12px;
+}
+#start main div article h2{
+    font-weight: bold;
+    font-size: 1.4em;
+    padding: 5px;
+}
+#start main div article h3{
+    font-weight: bold;
+    font-size: 1.3em;
+    padding: 5px 5px 5px 0;
+}
+#start main div article ul{
+    list-style-type: disc;
+    list-style-position: inside;
+}
+#start main div article ul li{
+    padding: 3px;
+}
+#start main div article>img{
+    width: 80%;
+    margin: auto;
+    display: block;
+    padding: 15px 0;
+}
+#start section a{
+    color: red;
+}
+/* START TO FLY OPMAAK EINDE */
+
+/* PRAKTISCH OPMAAK */
+#praktisch article{
+    background-color: white;
+    padding: 12px;
+    margin:12px;
+}
+#praktisch h2{
+    font-weight: bold;
+    font-size: 1.3em;
+    padding: 5px 5px 5px 0;
+}
+#praktisch article ul{
+    list-style-type: disc;
+    list-style-position: inside;
+}
+#praktisch article ul li{
+    padding-bottom: 3px;
+}
+#map, #mop{
+    width:80%;
+    margin: 15px 10%;
+    height:200px;
+}
+#lijstwaar li{
+    list-style-type: none;
+}
+/* PRAKTISCH OPMAAK EINDE */
+
+/* INSCHRIJVEN OPMAAK */
+#inschrijven main{
+    background-color: white;
+}
+
+#inschrijven h2{
+    font-weight: bold;
+    font-size: 1.6em;
+    padding: 10px 5px;
+}
+#inschrijven h3{
+    font-weight: bold;
+    font-size: 1.3em;
+    padding: 8px 10px;
+    background-color: #DDD;
+    margin-bottom: 5px;
+}
+#inschrijven h4{
+    font-weight: bold;
+    font-size:1.1em;
+    padding:4px 20px;
+}
+#inschrijven>main>div{
+    margin:10px;
+    padding-bottom: 10px;
+}
+#inschrijven>main>div{
+    border: solid 3px #DDD;
+}
+
+input[type=text],input[type=email] {
+    width:90%;
+    margin-left: 10px;
+}
+
+
+#inschrijven label{
+    text-align: right;
+    padding: 0 10px;
+}
+#WIP{
+    padding:8px;
+    background-color: yellow;
+    border: solid 2px black;
+    color:black;
+    font-weight: bold;
+    margin: 10px;
+    display:block;
+    text-align: center;
+    text-decoration: none;
+}
+/* INSCHRIJVEN OPMAAK EINDE */
+
+@media screen and (min-width: 775px){
+    /* ALGEMEEN */
+    nav ul li a:hover{
+        color: white;
+        background-color: #920202;
+    }
+    nav ul li a{
+        color: #DDD;
+        padding: 20px;
+        border: 1px solid white;
+    }
+    nav ul{
+        display: flex;
+        width: 100%;
+    }
+    nav ul li{
+
+        width: 100%;
+    }
+    nav{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    html{
+        max-width: 1100px;
+    }
+    header nav{
+        right: 0;
+        bottom: 0;
+    }
+    footer address div{
+        display: grid;
+        grid-template-columns: 40% 40% 20%;
+    }
+    header h1 img{
+        max-width: 180px;
+    }
+    #fblink{
+        width: 5%;
+    }
+    /* ALGEMEEN EINDE */
+
+    /* HOME OPMAAK */
+    #knop{
+        padding: 2%;
+        width: 30%;
+        top: 230px;
+        left: 33%;
+        border: 1px solid;
+        font-size: 1.2em;
+    }
+    #home main h2{
+        padding: 20px 15% 0;
+        font-size: 1.5em;
+        line-height: 1.3em;
+    }
+    /* HOME OPMAAK EINDE */
+
+    /* WAT OPMAAK */
+    #wat main article img{
+        float: left;
+        width: 40%;
+        padding: 20px;
+    }
+    #wat main article p:after{
+        clear: both;
+    }
+    #wat main article{
+        overflow: auto;
+    }
+    #wat main article p{
+        padding-top: 30px;
+        line-height: 1.4em;
+        padding-bottom: 20px;
+        padding-left: 40px;
+    }
+    /* WAT OPMAAK EINDE */
+
+    /* Start-to-Fly OPMAAK */
+    #start>main>div>article>p{
+        padding-top: 30px;
+    }
+    #start>main>div{
+        display:grid;
+        grid-template-columns: 70% 30%;
+    }
+    #start>main>div>article{
+    margin-right: 0;
+    }
+    #start main div article img{
+        float: left;
+        width: 40%;
+        padding: 20px;
+    }
+    /* START TO FLY OPMAAK EINDE */
+
+    /* PRAKTISCH OPMAAK */
+    #praktisch main section{
+        display: grid;
+        grid-template-columns: 30% 70%;
+    }
+    /* PRAKTISCH OPMAAK EINDE */
+
+    /* INSCHRIJVEN OPMAAK */
+    #inschrijven form{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-gap: 4px;
+    }
+    input[type=text], input[type=email] {
+        width: 80%;
+    }
+
+    /* INSCHRIJVEN OPMAAK EINDE */
+}

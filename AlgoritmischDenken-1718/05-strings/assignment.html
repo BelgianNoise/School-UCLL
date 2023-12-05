@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Strings</title>
+    <script src="bundle.js"></script>
+    <script src="student.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+    <style>
+      #methods {
+        margin: 1em auto;
+        border-collapse: collapse;
+      }
+
+      #methods th {
+        border-bottom: 1px solid black;
+      }
+
+      #methods td {
+        padding: 0.25em 1em;
+      }
+
+      #methods tr td:first-child {
+        font-family: monospace;
+      }
+
+      #code-points {
+        margin: 0.25em auto;
+        text-align: center;
+        border-collapse: collapse;
+      }
+
+      #code-points th {
+        border-bottom: 1px solid black;
+        padding: 0.25em 1em;
+      }
+
+      #code-points td {
+        padding: 0.25em 1em;
+      }
+
+      #code-points td:nth-child(2) {
+        border-right: 1px solid black;
+      }
+
+      #code-points td:nth-child(4) {
+        border-right: 1px solid black;
+      }
+
+      #code-points th:nth-child(2) {
+        border-right: 1px solid black;
+      }
+
+      #code-points th:nth-child(4) {
+        border-right: 1px solid black;
+      }
+    </style> 
+  </head>
+  <body>
+    <header>
+      <h1>Strings</h1>
+      <div id="commands"></div>
+      <span class="exercise-total-score"></span>
+    </header>
+    <aside>
+      <div id="exercise-overview"></div>
+      <div id="exercise-overview-collapser"><span>&#9658;</span></div>
+    </aside>
+    <div id="contents">
+      <section class="explanation">
+        <header>
+          <h1>Strings</h1>
+        </header>
+        <p>
+          Een string wordt in code voorgesteld d.m.v. aanhalingstekens.
+          Zo kan men de naam <code>Jan</code> schrijven als <code>"Jan"</code>.
+          Het gebruik van apostrofes is ook toegelaten: <code>'Jan'</code> en <code>"Jan"</code>
+          zijn equivalent.
+        </p>
+        <p>
+          Als <code>str</code> een string bevat, dan heb je toegang tot de volgende functionaliteit:
+        </p>
+        <table id="methods">
+          <tbody>
+            <tr>
+              <th>Syntax</th>
+              <th>Beschrijving</th>
+            </tr>
+            <tr>
+              <td>str.length</td>
+              <td>Lengte van de string.</td>
+            </tr>
+            <tr>
+              <td>str.charAt(i)</td>
+              <td>Geeft het teken met index <code>i</code> terug.</td>
+            </tr>
+            <tr>
+              <td>parseInt(str)</td>
+              <td>Zet string om naar geheel getal.</td>
+            </tr>
+            <tr>
+              <td>parseFloat(str)</td>
+              <td>Zet string om naar getal.</td>
+            </tr>
+            <tr>
+              <td>str.concat(str2)</td>
+              <td>Samenvoegen tot nieuwe string. Kan ook geschreven worden als <code>str + str2</code>.</td>
+            </tr>
+            <tr>
+              <td>str.includes(str2)</td>
+              <td>Gaat na of <code>str2</code> een deelstring is van <code>str</code>.</td>
+            </tr>
+            <tr>
+              <td>str.startsWith(str2)</td>
+              <td>Gaat na of <code>str2</code> een prefix is van <code>str</code>.</td>
+            </tr>
+            <tr>
+              <td>str.endsWith(str2)</td>
+              <td>Gaat na of <code>str2</code> een suffix is van <code>str</code>.</td>
+            </tr>
+            <tr>
+              <td>str.split(sep)</td>
+              <td>Split de strings op met <code>sep</code> als separator.</td>
+            </tr>
+            <tr>
+              <td>str.substr(i, len)</td>
+              <td>Deelstring beginnende bij index <code>i</code> en <code>len</code> lang.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Meer informatie kan je <a href="https://www.w3schools.com/jsref/jsref_obj_string.asp">online</a> vinden.
+        </p>
+        <p>
+          Merk op dat er een verschil is tussen <code>123</code> en <code>"123"</code>:
+          de eerste waarde is een getal, terwijl de tweede een string is.
+          Als je <code>123 + 456</code> uitrekent, krijg je <code>579</code>.
+          Als je echter <code>"123" + "456"</code> evalueert, geeft dit <code>"123456"</code>.
+        </p>
+        <p>
+          De operator <code>+</code> kan dus gebruikt worden op zowel getallen en strings.
+          Dit "recycleren van eenzelfde operator" heet <strong>overloading</strong>.
+          Overloaden betekent dat er meer dan &eacute;&eacute;n
+          betekenis gegeven wordt aan eenzelfde symbool. Dit concept komt in veel programmeertalen voor.
+        </p>
+        <p>
+          Je kan je afvragen wat er gebeurt als je een string met een getal optelt, bijvoorbeeld
+          <code>"123" + 456</code>.
+          Javascript zal het getal eerst omzetten naar een string: <code>456</code>
+          wordt <code>"456"</code>. Vervolgens wordt concatenatie toegepast
+          en krijg je <code>"123456"</code> als resultaat.
+        </p>
+        <p>
+          JavaScript ondersteunt tevens <em>string interpolation</em>: dit laat je toe gemakkelijk strings op te bouwen.
+          Stel dat je variabelen <code>d = 1</code>, <code>m = 5</code> en <code>y = 2000</code> hebt,
+          dan zal <code>`${d}/${m}/${y}`</code> de string <code>"1/5/2000"</code> produceren.
+        </p>
+      </section>
+      
+      <section class="interpretation exercise" data-exercise-name="concat">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="stringInterpolation">
+          <header>
+            <h1 class="exercise-header">Wat doet deze code?</h1>
+          </header>
+        </section>
+
+      <section class="coding exercise" data-exercise-name="repeat" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">repeat(str, n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>repeat(str, n)</code> die een nieuwe string
+            construeert door <code>n</code> keer de string <code>str</code> te herhalen.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="formatTime" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">formatTime(h, m, s)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>formatTime(h, m, s)</code> die, gegeven
+            drie positieve gehele getallen <code>h</code>, <code>m</code> en <code>s</code>,
+            die respectievelijk uur, minuten en seconden voorstellen, een string
+            opbouwt van de vorm <code>"h:m:s"</code>.
+          </p>
+        </div>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="quotrest" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">quotrest(a, b)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>quotrest(a, b)</code> die
+            het quoti&euml;nt en de rest uitrekent van de deling van <code>a</code> door <code>b</code>.
+            Als returnwaarde moet het de string teruggeven <code>"a = q * b + r"</code>
+            waarbij <code>q</code> en <code>r</code> het quoti&euml;nt en de rest zijn, respectievelijk.
+          </p>
+        </div>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="parse">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+      
+      <section class="interpretation exercise" data-exercise-name="lastChar">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="countWords" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">countWords(str)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>countWords(str)</code> die het aantal woorden
+            telt in <code>str</code>. Ga ervan uit dat woorden altijd gescheiden worden door
+            &eacute;&eacute;n spatie.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="countWords2" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">countWords2(str)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Zelfde oefening als hierboven, alleen met lastigere inputs. Zo kunnen er overal spaties
+            voorkomen en is het niet meer gegarandeerd dat woorden door een enkele spatie gescheiden worden.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="rightJustify" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">rightJustify(str, n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>rightJustify(str, n)</code> die, gegeven een string <code>str</code>
+            en een positief geheel getal <code>n</code>, een nieuwe string teruggeeft die
+            gelijk is aan <code>str</code>, maar waar aan de linkerkant een minimaal aantal spaties werden toegevoegd
+            zodat de totale lengte minstens <code>n</code> bedraagt.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="longestWord" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">longestWord(str)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>longestWord(str)</code>, het langste woord uit de string teruggeeft.
+            Woorden worden gescheiden door spaties.
+          </p>
+        </div>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="fixDate" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">fixDate(str)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            In de VS schrijft men een datum vaak als <code>mm/dd/yyyy</code>, terwijl
+            wij eerder de volgorde <code>dd/mm/yyyyy</code> hanteren. Schrijf een functie
+            die gegeven een Amerikaanse datum aanpast aan onze schrijfwijze, m.a.w.
+            die dag en maand van plaats verwisselt.
+          </p>
+          <p>
+            Je mag ervan uitgaan dat dag en maand altijd exact twee tekens tellen.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="balanced" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">balanced(str)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>balanced(str)</code> die nagaat of de gegeven string <code>str</code>
+            correct gevormd is, d.i. dat elk opend haakje <code>(</code> een overeenkomstig
+            sluitend haakje <code>)</code> heeft.
+          </p>
+          <p>
+            Merk op dat er tevens andere tekens dan haakjes in de string kunnen voorkomen.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="equalModuloSpaces" data-exercise-difficulty="2">
+          <header>
+            <h1 class="exercise-header">equalModuloSpaces(s1, s2)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>equalModuloSpaces(s1, s2)</code> die nagaat
+              of twee strings <code>s1</code> en <code>s2</code> gelijk zijn, op spaties na.
+              M.a.w. de strings moeten dezelfde tekens in dezelfde volgorde bevatten,
+              maar spaties worden genegeerd.
+            </p>
+          </div>
+        </section>
+
+      <section class="explanation">
+        <header>
+          <h1>Code Points</h1>
+        </header>
+        <p>
+          Intern werkt een computer uitsluitend met bits. Deze kunnen gebruikt
+          worden om alle soorten informatie voor te stellen: getallen, muziek, beelden, tekst, etc.
+        </p>
+        <p>
+          Gehele getallen worden voorgesteld door een aantal bits te groeperen (typisch 8, 16, 32 of 64)
+          en deze te interpreteren als de binaire voorstelling van een getal.
+        </p>
+        <p>
+          Tekst is een sequentie van tekens zoals letters, cijfers en interpunctie. Om zo een teken
+          voor te stellen moet de computer weer gebruik maken van bits. Het principe is eenvoudig:
+          er werd een gigantische tabel gedefinieerd waar elk teken een eigen nummer krijgt,
+          code point genoemd. Enkele voorbeelden:
+        </p>
+        <table id="code-points">
+          <tbody>
+            <tr>
+              <th>Code Point</th><th>Teken</th><th>Code Point</th><th>Teken</th><th>Code Point</th><th>Teken</th>
+            </tr>
+            <tr>
+              <td>65</td><td>&#65;</td>
+              <td>97</td><td>&#97;</td>
+              <td>48</td><td>&#48;</td>
+            </tr>
+            <tr>
+              <td>66</td><td>&#66;</td>
+              <td>98</td><td>&#98;</td>
+              <td>49</td><td>&#49;</td>
+            </tr>
+            <tr>
+              <td>67</td><td>&#67;</td>
+              <td>99</td><td>&#99;</td>
+              <td>50</td><td>&#50;</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Hier kan je een <a href="https://unicode-table.com/en/">volledig overzicht</a> vinden.
+        </p>
+        <p>
+          Om gegeven een codepoint <code>n</code> het overeenkomstige teken op te vragen,
+          kan je <code>String.fromCharCode(n)</code> gebruiken. Omgekeerd,
+          om de code point van een teken op te vragen, plaats je het teken in een string <code>str</code>
+          en roep je <code>str.charCodeAt(i)</code> op, met <code>i</code> de index van het
+          teken in <code>str</code>.
+        </p>
+      </section>      
+
+      <section class="interpretation exercise" data-exercise-name="nextChar">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="isDigit">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isLowerCaseLetter" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">isLowerCaseLetter(c)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isLowerCaseLetter(n)</code> die, gegeven
+            een string van &eacute;&eacute;n teken lang,
+            nagaat of dit teken een kleine letter is (<code>a</code>, <code>b</code>,
+            <code>c</code>, &hellip; maar niet <code>A</code> of <code>5</code>).
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isUpperCaseLetter" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">isUpperCaseLetter(c)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isUpperCaseLetter(n)</code> die, gegeven
+            een string van &eacute;&eacute;n teken lang,
+            nagaat of dit teken een grote letter is (<code>A</code>, <code>B</code>,
+            <code>C</code>, &hellip; maar niet <code>a</code> of <code>5</code>).
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isLetter" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">isLetter(c)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isLetter(n)</code> die, gegeven
+            een string van &eacute;&eacute;n teken lang,
+            nagaat of dit teken een letter is.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isValidPassword" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">isValidPassword(password)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isValidPassword(n)</code> die, gegeven
+            een string <code>password</code>, nagaat of dit een geldig paswoord voorstelt.
+            Een geldig paswoord heeft als kenmerken
+          </p>
+          <ul>
+            <li>
+              Het is minstens acht tekens lang.
+            </li>
+            <li>
+              Het bevat minstens een kleine letter.
+            </li>
+            <li>
+              Het bevat minstens een grote letter.
+            </li>
+            <li>
+              Het bevat minstens een cijfer.
+            </li>
+          </ul>
+        </div>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="alphabet" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">alphabet(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>alphabet(n)</code> die, gegeven een geheel getal
+            <code>n</code> tussen <code>0</code> en <code>25</code>, de zoveelste letter
+            uit het alfabet teruggeeft. <code>A</code> heeft index <code>0</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="inverseAlphabet" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">inverseAlphabet(c)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>inverseAlphabet(c)</code> die,
+            gegeven een string <code>c</code> van &eacute;&eacute;n letter lang, de index
+            van deze letter in het alfabet teruggeeft. De index van <code>a</code>
+            is 0. De functie moet werken op zowel grote als kleine letters.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="caesar" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">caesar(str, n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>caesar(str, n)</code> die de Caesar shift encryptiemethode toepast.
+            Dit houdt in dat elke letter uit <code>str</code> met <code>n</code> "verschoven" wordt.
+            Bijvoorbeeld, stel dat <code>n === 1</code>, dan wordt elke <code>a</code> een <code>b</code>,
+            elke <code>b</code> een <code>c</code>, etc. De <code>z</code> wordt dan weer een <code>a</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="fromBinary" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">fromBinary(str)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>fromBinary(str)</code> die een string <code>str</code> verwacht
+            met enkel <code>0</code>'en en <code>1</code>'en in. Deze string moet als de
+            binaire voorstelling van een getal worden ge&iuml;nterpreteerd. De functie
+            moet dit getal uitrekenen.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="toBinary" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">toBinary(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>toBinary(n)</code> die het gegeven positief
+            geheel getal <code>n</code> omzet naar een binaire string.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="fromHex" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">fromHex(str)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>fromHex(str)</code> die, gegeven
+            een hexadecimale voorstelling van een getal als string,
+            dit getal uitrekent.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="toHex" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">toHex(str)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>toHex(n)</code> die, gegeven een positief geheel getal,
+            de hexadecimale voorstelling ervan uitrekent.
+          </p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ADTs</title>
+    <script src="bundle.js"></script>
+    <script src="student.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+    
+    <style>
+      #value-table {
+        width: 50%;
+        margin: 1em auto;
+        border-collapse: collapse;
+        text-align: center;
+      }
+
+      #value-table th {
+        border-bottom: 1px solid black;
+      }
+
+      span.card {
+        padding: 0.1em;
+        margin: 0.1em;
+        background: white;
+        border: 1px solid black;
+        height: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>ADTs</h1>
+      <div id="commands"></div>
+      <span class="exercise-total-score"></span>
+    </header>
+    <aside>
+      <div id="exercise-overview"></div>
+      <div id="exercise-overview-collapser"><span>&#9658;</span></div>
+    </aside>
+    <div id="contents">
+      <section class="explanation">
+        <header>
+          <h1>Basisdefinities Kleuren</h1>
+        </header>
+        <p>
+          We willen een kaartspel programmeren. We focussen ons eerst op de kleuren: harten, klaveren, ruiten en schoppen.
+          We kunnen deze kleuren voorstellen door willekeurige JavaScript waarden (bv. strings of getallen), maar
+          we wensen de gekozen voorstelling te abstraheren.
+        </p>
+        <p>
+          Kies voor elk van de vier kleuren een willekeurige voorstelling. Schrijf vier functies <code>hearts()</code>,
+          <code>spades()</code>, <code>clubs()</code> en <code>diamonds()</code> die respectievelijk de waarde voor
+          harten, schoppen, klaveren en ruiten teruggeven.
+        </p>
+        <p>
+          Voor deze functies kunnen geen tests aangeboden worden gezien de voorstelling vrij gekozen kan worden.
+        </p>
+      </section>
+
+      <section class="unit-test exercise" data-exercise-name="sameSuits" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">sameSuits(s1, s2)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>sameSuits(s1, s2)</code>, die, gegeven twee kaartkleuren (harten, klaveren, &hellip;), nagaat
+            of deze gelijk zijn.
+          </p>
+          <p>
+            Deze functie mag afweten van de JavaScript-voorstelling van de verschillende kleuren.
+          </p>
+        </div>
+      </section>
+
+      <section class="explanation">
+        <header>
+          <h1>Basisdefinities Waarden</h1>
+        </header>
+        <p>
+          Naast de kleur wordt een kaart gekenmerkt door een waarde. De mogelijke waarden zijn aas, 2, 3, 4, 5, 6, 7, 8,
+          9, 10, boer, dame en heer. Schrijf de volgende functies:
+        </p>
+        <table id="value-table">
+          <tbody>
+            <tr>
+              <th>Functie</th>
+              <th>Beschrijving</th>
+            </tr>
+            <tr>
+              <td><code>pips(n)</code></td>
+              <td>Getalwaarde. <code>n</code> is een getal tussen 2 en 10.</td>
+            </tr>
+            <tr>
+              <td><code>jack()</code></td>
+              <td>Boer.</td>
+            </tr>
+            <tr>
+              <td><code>queen()</code></td>
+              <td>Dame.</td>
+            </tr>
+            <tr>
+              <td><code>king()</code></td>
+              <td>Heer.</td>
+            </tr>
+            <tr>
+              <td><code>ace()</code></td>
+              <td>Aas.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="unit-test exercise" data-exercise-name="compareValues" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">compareValues(v1, v2)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>compareValues(v1, v2)</code>, die twee gegeven kaartwaarden vergelijkt.
+          </p>
+          <ul>
+            <li>
+              Indien <code>v1</code> een lagere waarde heeft dan <code>v2</code>, moet er een negatieve waarde
+              teruggegeven worden. 
+            </li>
+            <li>
+              Indien <code>v1</code> een hogere waarde heeft dan <code>v2</code>, moet
+              er een positieve waarde teruggegeven worden.
+            </li>
+            <li>
+              Indien <code>v1</code> en <code>v2</code> gelijk zijn, moet er nul teruggegeven worden.
+            </li>
+          </ul>  
+          <p>
+            De aas wordt aanzien als de hoogste waarde.
+            Deze functie mag afweten van de JavaScript-voorstelling van de verschillende waardes.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="sameValues" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">sameValues(v1, v2)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>sameValues(v1, v2)</code>, die nagaat of de twee gegeven kaartwaarden
+            gelijk zijn.
+          </p>
+          <p>
+            Opgelet: deze functie mag geen gebruik maken van de gehanteerde interne voorstelling van de kaartwaarden.
+            M.a.w. deze functie moet steunen op <code>compareValues</code>.
+          </p>
+          <p>
+            Om te checken of je implementatie weldegelijk gebruik maakt van <code>compareValues</code> zijn er
+            tests geschreven die je eigen functies <code>ace</code>, <code>pips</code>, &hellip; en <code>compareValues</code>
+            vervangt door een andere voorstelling. Deze tests zijn aangegeven met een <code>(*)</code>. Indien deze
+            tests falen betekent dit dus dat je de abstractielagen niet respecteert.
+          </p>
+        </div>
+      </section>
+
+      <section class="unit-test exercise" data-exercise-name="createCard" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">createCard(v, s), cardValue(c), cardSuit(c)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            We hebben nu kaartkleuren en kaartwaarden gedefinieerd. We kunnen ze groeperen om een kaart te vormen.
+            Schrijf een functie <code>createCard(v, s)</code> die, gegeven een kaartwaarde <code>v</code>
+            en een kaartkleur <code>s</code>, een kaart maakt. <code>createCard</code> kan vergeleken
+            worden met een constructor die een kaartobject opbouwt.
+          </p>
+          <p>
+            Gegeven een kaart is het nuttig om de kenmerken ervan te kunnen opvragen. Schrijf
+            functies <code>cardValue(c)</code> en <code>cardSuit(c)</code> die,
+            gegeven een kaart <code>c</code>, de waarde en kleur ervan, respectievelijk, teruggegeven.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="cardsHaveSameSuit" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">cardsHaveSameSuit(card1, card2)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>cardsHaveSameSuit(card1, card2)</code> die nagaat of de twee gegeven kaarten
+            dezelfde kleur hebben. Met kleur bedoelen we harten, klaveren, &hellip;
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="cardsHaveSameValue" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">cardsHaveSameValue(card1, card2)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>cardsHaveSameValue(card1, card2)</code> die nagaat of de twee gegeven kaarten
+              dezelfde waarde hebben.
+            </p>
+          </div>
+        </section>
+
+      <section class="coding exercise" data-exercise-name="sameCards" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">sameCards(card1, card2)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>sameCards(card1, card2)</code> die nagaat of beide kaarten gelijk zijn.
+            </p>
+          </div>
+        </section>
+
+      <section class="coding exercise" data-exercise-name="isTrumpSuit" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">isTrumpSuit(suit)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            In ons kaartspel is schoppen troef. Schrijf een functie <code>isTrumpSuit(suit)</code> die nagaat of
+            de gegeven kleur <code>suit</code> gelijk is aan schoppen.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isTrumpCard" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">isTrumpCard(card)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isTrumpCard(card)</code> die nagaat of
+            de gegeven kaart <code>card</code> een troefkaart is, m.a.w.
+            indien de kleur van de kaart de troefkleur is.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="hasCardOfSuit" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">hasCardOfSuit(cards, suit)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>hasCardOfSuit(cards, suit)</code> die, gegeven
+            een array kaarten <code>carts</code> en een kleur <code>suit</code>,
+            nagaat of er een kaart in <code>cards</code> zit met de gegeven kleur.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="canPlay" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">canPlay(played, hand, index)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Er zijn vier spelers die elk om beurt een kaart spelen. De eerste speler
+            kan vrij kiezen welke kaart hij speelt. De drie andere zijn vervolgens verplicht
+            een kaart te spelen van dezelfde kleur. Indien een speler geen kaarten heeft van die kleur,
+            mag deze vrij kiezen welke kaart hij speelt.
+          </p>
+          <p>
+            Schrijf een functie <code>canPlay(played, hand, index)</code> die nagaat of een speler
+            en bepaalde kaart mag spelen. De parameters zijn hiervoor
+          </p>
+          <ul>
+            <li>
+              een array <code>played</code> die de gespeelde kaarten van de vorige spelers voorstelt. Deze array kan leeg zijn,
+              wat betekent dat de speler als eerste aan beurt is en bijgevolg vrij kan kiezen welke kaart hij speelt.
+            </li>
+            <li>
+              een array <code>hand</code> die de kaarten van de speler voorstelt.
+            </li>
+            <li>
+              een geheel getal <code>index</code> die verwijst naar een kaart uit <code>hand</code>.
+            </li>
+          </ul>
+          <p>
+            De functie <code>canPlay</code> moet nagaan of <code>hand[index]</code> mag gespeeld worden.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="indexOfStrongest" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">indexOfStrongest(cards)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>indexOfStrongest(cards)(</code> die, gegeven een array kaarten <code>cards</code>, de index van de "sterkste" kaart teruggeeft.
+          </p>
+          <p>
+            De sterkste kaart wordt gevonden als volgt:
+          </p>
+          <ul>
+            <li>
+              De eerste kaart in <code>cards</code> bepaalt de "hoofdkleur".
+            </li>
+            <li>
+              Enkel kaarten in de hoofdkleur of troefkleur komen in aanmerking om de sterkste te zijn. Andere kaarten kunnen genegeerd worden.
+            </li>
+            <li>
+              Een troefkaart is altijd sterker dan een niet-troefkaart, ongeacht de waarde.
+            </li>
+            <li>
+              Indien twee kaarten dezelfde kleur hebben, dan is de sterkste kaart degene met de hoogste waarde.
+            </li>
+          </ul>
+          <p>
+            Bijvoorbeeld, stel dat de eerste speler de <span class="card">8 <span style="color: red;">&hearts;</span></span> speelt
+          </p>
+          <ul>
+            <li>
+              De eerste speler de <span class="card">8 <span style="color: red;">&hearts;</span></span>. Dit maakt dat harten de uitgekomen kleur is.
+            </li>
+            <li>
+              De tweede speler heeft geen harten en kiest ervoor om <span class="card">10 <span style="color: red;">&diams;</span></span> te spelen.
+              Vermits deze kaart geen harten of troef is, kan deze onmogelijk de sterkste kaart zijn.
+            </li>
+            <li>
+              De derde speler speelt <span class="card">K <span style="color: red;">&hearts;</span></span>. Deze kaart is sterker dan <span class="card">8 <span style="color: red;">&hearts;</span></span>.
+            </li>
+            <li>
+              De laatste speler heeft tevens geen harten meer en speelt <span class="card">2 &spades;</span>. Dit is een troefkaart en is daardoor sterker dan <span class="card">K <span style="color: red;">&hearts;</span></span>.
+            </li>
+          </ul>
+          <p>
+            Gegeven de array <code>[</code><span class="card">8 <span style="color: red;">&hearts;</span></span>, <span class="card">10 <span style="color: red;">&diams;</span></span>,
+            <span class="card">K <span style="color: red;">&hearts;</span></span>, <span class="card">2 &spades;</span> <code>]</code> moet <code>indexOfStrongest</code> als resultaat 3 opleveren.
+          </p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

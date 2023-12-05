@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Loops</title>
+  <script src="bundle.js"></script>
+  <script src="student.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Loops</h1>
+    <div id="commands"></div>
+    <span class="exercise-total-score"></span>
+  </header>
+  <aside>
+    <div id="exercise-overview"></div>
+    <div id="exercise-overview-collapser"><span>&#9658;</span></div>
+  </aside>
+  <div id="contents">
+    <section class="category">
+      <header>
+        <h1>De <code>while</code>-lus</h1>
+      </header>
+
+      <section class="explanation">
+        <header>
+          <h1>De <code>while</code> lus</h1>
+        </header>
+        <p>
+          Als je wil dat bepaalde instructies meermaals uitgevoerd worden, kan je in principe deze instructies willekeurig vaak copy
+          pasten. Dit is echter een verschrikkelijk slechte oplossing. Los van het feit dat indien er een bug zou zijn in
+          de gecopypaste code (die dan op zoveel plekken zou moeten gecorrigeerd worden), kan het altijd zijn dat indien
+          je de code $n$ keer kopieert, tijdens de uitvoering blijkt dat je deze $n+1$ keer had moeten dupliceren.
+        </p>
+        <p>
+          Beschouw een webserver: deze ontvangt requests van clients (bv. als je naar een website browset, vraag je aan de server om
+          een bepaalde pagina te versturen) en moet deze afhandelen. De code die elke request afhandelt moet tot in het oneindige
+          herhaald worden, zoniet zou de server plots gewoon stilvallen.
+        </p>
+        <p>
+          Als je op voorhand niet weet hoe vaak iets herhaald moet worden, zal je moeten beroep doen op een nieuw concept, nl. lussen
+          (Engels: loops). Deze zien er als volgt uit:
+        </p>
+        <text-area class="raw-source" data-source-function="whileExample"></text-area>
+        <p>
+          Een <code>while</code>-lus werkt als volgt:
+        </p>
+        <ol>
+          <li>
+            <code>conditie</code> wordt ge&euml;valueerd. Dit moet <code>true</code> of <code>false</code> opleveren.
+          </li>
+          <li>
+            Indien het resultaat <code>true</code> is, wordt <code>body</code> uitgevoerd. Hierna wordt teruggesprongen naar
+            stap 1.
+          </li>
+          <li>
+            Indien <code>conditie</code> resulteerde in <code>false</code> is, betekent dit het einde van de lus. De uitvoering
+            gaat door met wat er na de lus komt.
+          </li>
+        </ol>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="skippedLoop">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="atomicLoop">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Merk op dat indien de body van een lus wordt uitgevoerd, dan ook meteen de <strong>ganse</strong> body wordt
+            uitgevoerd. De lusconditie wordt m.a.w. niet continu gecheckt tijdens de uitvoering van de body, enkel ervoor
+            en erna.
+          </p>
+        </div>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="round5">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="log2">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="factorial" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">factorial(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>factorial(n)</code> die $n!$ uitrekent: \[ n! = 1 \times 2 \times 3 \times \cdots \times
+            n \]
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="sumRange" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">sumRange(a, b)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>sumRange(a, b)</code> die, gegeven twee gehele getallen <code>a</code> en <code>b</code>,
+            de som van <code>a</code> tot en met <code>b</code> uitrekent:
+          </p>
+          \[ a + (a + 1) + (a + 2) + \cdots + b \]
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="invest" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">invest(goal)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je belegt &euro;1000 tegen 5%. Schrijf een functie <code>invest(goal)</code> die gegeven een doelbedrag <code>goal</code>
+            uitrekent hoeveel jaar het duur eer je &euro;1000 gegroeid zijn tot <code>goal</code>. Ga ervan uit dat de intrest
+            telkens toegevoegd wordt op het einde van elk jaar.
+          </p>
+          <p>
+            Je kan dit in principe met logaritmes oplossen, maar dit valt buiten het bereik van dit vak. Voor deze oefening is het de
+            bedoeling dat je een lus gebruikt om herhaaldelijk 5% toe te voegen aan het initieel bedrag tot het voldoende
+            gegroeid is.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="countDigits" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">countDigits(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>countDigits(n)</code> die, gegeven een geheel getal <code>n</code>, berekent hoeveel
+            cijfers er in dit getal voorkomen.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="gcd" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">gcd(a, b)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>gcd(a, b)</code> die, gegeven twee positieve gehele getallen, uitrekent wat hun grootste
+            gemene deler is.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="necessaryWins" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">necessaryWins(wins, losses)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je bent een grote fan van een spel X. Je neemt deel aan een toernooi, maar enkel zij die 90% winstpercentage halen mogen
+            naar de finale. Je hebt momenteel <code>wins</code> keer gewonnen maar
+            <code>losses</code> keer verloren. Hoeveel keer moet je nog winnen om 90% winstpercentage te bereiken?
+          </p>
+          <p>
+            Bijvoorbeeld, als <code>wins = 89</code> en <code>losses = 10</code>, dan is je winstpercentage 89.89%. Als je
+            nog &eacute;&eacute;n spel zou winnen, kom je uit op <code>wins = 90</code> en <code>losses = 10</code>, en heb
+            je dus 90% winstpercentage behaalt.
+          </p>
+          <p>
+            Schrijf een functie <code>necessaryWins(wins, losses)</code> die uitrekent hoe vaak je nog moet winnen om 90%
+            winstpercentage te bekomen.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="sqrt" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">sqrt(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Stel dat er geen ingebouwde vierkantsworteloperatie bestaat en je hiervoor zelf een algoritme moet schrijven. Je gaat als
+            volgt te werk om de wortel uit een willekeurig positief getal $n$ te berekenen:
+          </p>
+          <ul>
+            <li>
+              Je begint met het interval $[0, n]$. Je weet dat $\sqrt{n}$ zich ergens hierin moet bevinden.
+            </li>
+            <li>
+              Je berekent het midden van dit interval: $c = (n - 0) / 2$.
+            </li>
+            <li>
+              Je kijkt of $c$ een goede benadering is voor $\sqrt n$. Dit doe je door $c^2$ uit te rekenen en te zien hoeveel dit van $n$
+              verschilt.
+            </li>
+            <li>
+              Als $c^2 = n$, dan heb je de wortel gevonden: $\sqrt n = c$.
+            </li>
+            <li>
+              Als $c^2 &gt; n$, dan heb je de wortel overschat en weet je dat je $\sqrt n$ verder moet zoeken in de linkerhelft van het
+              interval, nl. $[0, c]$.
+            </li>
+            <li>
+              Als $c^2 &lt; n$, dan moet je verder zoeken in de rechterhelft van het interval, nl. $[c, n]$.
+            </li>
+            <li>
+              Je herhaalt de bovenstaande stappen voor het nieuwe interval. Bij elke iteratie wordt het interval kleiner en wordt je benadering
+              voor $\sqrt n$ alsmaar nauwkeuriger.
+            </li>
+          </ul>
+          <p>
+            Er is een klein probleem met deze aanpak: de kans dat $c^2$ exact gelijk is aan $n$ is zo goed als nul, met als gevolg dat
+            je algoritme oneindig blijft "inzoomen" maar nooit exact valt op $\sqrt n$. Dit is een zeer vaak voorkomend probleem
+            bij het werken met kommagetallen. Een oplossing hiervoor is om wat marge toe te laten op de gelijkheid: i.p.v.
+            $c^2 = n$, moeten we ons tevreden stellen met $c^2 \approx n$. Dit doe je met de volgende formule:
+            \[ a \approx b \textrm{ is gedefinieerd als } |a - b| &lt; 0.001 \]
+            M.a.w. het verschil tussen $c^2$ en $n$ moet kleiner zijn
+            dan 0.001. $|x|$ staat voor absolute waarde en kan je uitrekenen met <code>Math.abs(x)</code>.
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <section class="category">
+      <header>
+        <h1>De <code>for</code>-lus</h1>
+      </header>
+
+      <section class="explanation">
+        <header>
+          <h1>De <code>for</code> lus</h1>
+        </header>
+        <p>
+          In de praktijk volgt de <code>while</code>-lus vaak een bepaald patroon:
+        </p>
+        <text-area class="raw-source" data-source-function="whilePatternExample"></text-area>
+        <p>
+          Het patroon wordt gekenmerkt door deze vier elementen:
+        </p>
+        <ul>
+          <li>
+            De initialisatie van een lusvariabele (<code>let i = 0</code>).
+          </li>
+          <li>
+            De conditie (<code>i &lt; max</code>).
+          </li>
+          <li>
+            De update van de lusvariabele (<code>i++</code>).
+          </li>
+          <li>
+            De lusbody zelf die de lusvariabele die wijzigt.
+          </li>
+        </ul>
+        <p>
+          De drie eerste elementen bepalen samen dan volledig hoe vaak <code>body</code> herhaald wordt. De <code>while</code>
+          lus verspreidt deze echter, wat de leesbaarheid niet ten goede komt.
+        </p>
+        <p>
+          Een tweede lusconstructie, nl. de <code>for</code>-lus, groepeert de drie lusbepalende elementen op &eacute;&eacute;n
+          plek als volgt:
+        </p>
+        <text-area class="raw-source" data-source-function="forExample"></text-area>
+        <p>
+          De eerste lijn bevat dan alle nodige informatie over hoe vaak de lus herhaald zal worden.
+        </p>
+        <p>
+          Merk op dat de <code>while</code>- en <code>for</code>-lus even "krachtig" zijn: elke <code>while</code> kan omgezet
+          worden naar een equivalente <code>for</code> en omgekeerd. Het enige voordeel van de <code>for</code>-lus is dat,
+          indien de lus een specifieke structuur vertoont, de <code>for</code>-syntax leesbaarder is.
+        </p>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="sum">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="prematureReturn">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="count" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">count(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>count(n)</code> die, gegeven een geheel getal <code>n</code>, telt hoeveel getallen
+            tussen <code>0</code> en <code>n</code> (inclusief) er deelbaar zijn door 6 maar niet door 10.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isPrime" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">isPrime(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isPrime(n)</code> die, gegeven een positief geheel getal, nagaat of dit een priemgetal
+            is. Een priemgetal is een deelbaar dat enkel deelbaar is door 1 en zichzelf. 1 telt niet mee als priemgetal.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="countPrimes" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">countPrimes(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>countPrimes(n)</code> die telt hoeveel priemgetallen er bestaan die kleiner zijn dan
+            <code>n</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="amazon" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">amazon(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Op Amazon was er ooit een boek te koop voor een miljoen dollar. Daarbovenop steeg de prijs ook nog eens elke week. Iemand
+            besloot dit fenomeen te bestuderen.
+          </p>
+          <p>
+            Bleek dat er twee handelaars waren die hetzelfde boek aanboden via Amazon. Beiden gebruikten een algoritme om de prijs automatisch
+            elke week te updaten. De ene handelaar liet zijn algoritme zijn prijs instellen op 5% onder de laagste prijs
+            van de concurrentie. De andere handelaar koos ervoor om zijn prijs gelijk te stellen aan 10% <strong>meer</strong>
+            dan de laagste prijs van de andere handelaars. Als men deze twee algoritmes tegen elkaar opzet, stijgt de prijs
+            exponentieel.
+          </p>
+          <p>
+            Men kan zich de vraag kunnen stellen waarom de tweede handelaar vrijwillig 10% duurder wou zijn dan zijn goedkoopste concurrent.
+            Vermoedelijk had hij het boek niet in stock en was hij van plan het snel bij de concurrentie te kopen zodra iemand
+            een bestelling bij hem zou plaatsen.
+          </p>
+          <p>
+            Schrijf een functie <code>amazon(n)</code> die uitrekent wat de prijs van de 2de handelaar is na <code>n</code>
+            weken. Ga ervan uit dat het boek initieel aangeboden wordt voor &euro;50 door beide handelaars.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="savings" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">savings(initial, interest, perMonth, duration)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je hebt een startkapitaal <code>initial</code> op een spaarrekening staan. Per maand stort je <code>perMonth</code>.
+            Elk jaar komt er <code>interest</code>% rente bij. Schrijf een functie <code>savings(initial, interest, perMonth, duration)</code>
+            die uitrekent hoeveel geld je na <code>duration</code> jaar hebt.
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <section class="category">
+      <header>
+        <h1>Geneste Lussen</h1>
+      </header>
+      <section class="interpretation exercise" data-exercise-name="nested">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="sum2d" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">sum2d(a, b)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>sum2d(a, b)</code> die, gegeven twee positieve gehele getallen <code>a</code> en <code>b</code>,
+            de som uitrekent van alle $i \cdot j$ waarbij $i = 1, 2, \dots, a$ en $j = 1, 2, \dots, b$.
+          </p>
+          <p>
+            Bijvoorbeeld, <code>sum2d(4, 3)</code> is gelijk aan
+          </p>
+          \[ 
+            \begin{array}{ccccccc}
+              1 \cdot 1 & + & 1 \cdot 2 & + & 1 \cdot 3 & + \\
+              2 \cdot 1 & + & 2 \cdot 2 & + & 2 \cdot 3 & + \\
+              3 \cdot 1 & + & 3 \cdot 2 & + & 3 \cdot 3 & + \\
+              4 \cdot 1 & + & 4 \cdot 2 & + & 4 \cdot 3 & = & 60 \\
+            \end{array}
+          \]
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="finalDigitSum" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">finalDigitSum(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>finalDigitSum(n)</code> die, gegeven een positief geheel getal <code>n</code>, de som
+            van de cijfers uitrekent. Indien deze som weer meerdere cijfers bevat, moet hiervan weer de cijfersom uitgerekend
+            worden. Dit wordt herhaald tot je een eencijferig getal uitkomt.
+          </p>
+          \[ 7813 \rightarrow 7+8+1+3 = 19 \rightarrow 1 + 9 = 10 \rightarrow 1 + 0 = 1 \]
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="pythagoreanTriplets" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">pythagoreanTriplets(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Een Pythagorean triplet is een triplet van gehele getallen $(a, b, c)$ waarbij $1 \leq a \leq b$ en $a^2 + b^2 = c^2$.
+          </p>
+          <p>
+            Bijvoorbeeld, $(3, 4, 5)$ is een Pythagorean triplet omdat $3 \leq 4 \leq 5$ en $3^2 + 4^2 = 25 = 5^2$.
+          </p>
+          <p>
+            Schrijf een functie <code>pythagoreanTriplets(n)</code> die nagaat hoeveel Pythagorean Triplets $(a, b, c)$ er
+            bestaan waarbij $b$ niet groter is dan $n$.
+          </p>
+        </div>
+      </section>
+    </section>
+  </div>
+</body>
+
+</html>

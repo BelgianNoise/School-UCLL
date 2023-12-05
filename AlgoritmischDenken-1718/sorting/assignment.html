@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sorting</title>
+    <script src="bundle.js"></script>
+    <script src="student.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Sorting</h1>
+      <div id="commands"></div>
+      <span class="exercise-total-score"></span>
+    </header>
+    <aside>
+      <div id="exercise-overview"></div>
+      <div id="exercise-overview-collapser"><span>&#9658;</span></div>
+    </aside>
+    <div id="contents">
+      <section class="interpretation exercise" data-exercise-name="badSort">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+      
+      <section class="category">
+        <header>
+          <h1>Bubble Sort</h1>
+        </header>
+        <section class="coding exercise" data-exercise-name="swap" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">swap(xs, i, j)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>swap(xs, i, j)</code> die,
+              gegeven een array <code>xs</code> en twee gehele getallen <code>i</code>
+              en <code>j</code>, de array <code>xs</code> aanpast
+              zodat de elementen met index <code>i</code> en <code>j</code>
+              van plaats verwisseld zijn.
+            </p>
+            <p>
+              Je mag ervan uitgaan dat <code>i</code> en <code>j</code> geldige indices zijn.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="bubbleSort" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">bubbleSort(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>bubbleSort(ns)</code> die de gegeven
+              array getallen sorteert gebruik makende van het bubble sort algoritme.
+            </p>
+          </div>
+        </section>
+      </section>
+      
+      <section class="category">
+        <header>
+          <h1>Selection Sort</h1>
+        </header>
+        <section class="coding exercise" data-exercise-name="indexOfMinimum" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">indexOfMinimum(xs)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>indexOfMinimum(ns)</code> die, gegeven
+              een array van getallen, de index van het kleinste element teruggeeft.
+              Indien er meerdere zulke elementen zijn, moet de kleinste index teruggegeven worden.
+              Indien <code>ns</code> leeg is, moet het resultaat <code>-1</code> zijn.
+            </p>
+          </div>
+        </section>
+        
+        <section class="coding exercise" data-exercise-name="removeAt" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">removeAt(xs, index)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>remoteAt(xs, i)</code> die, gegeven
+              een array <code>xs</code> en een getal <code>i</code>,
+              een nieuwe array teruggeeft gelijk aan <code>xs</code> waarbij
+              het element met index <code>i</code> werd verwijderd.
+              De array <code>xs</code> zelf mag dus niet gewijzigd worden.
+            </p>
+            <p>
+              Je mag ervan uitgaan dat <code>i</code> een geldige index is voor <code>xs</code>.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="selectionSort" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">selectionSort(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>selectionSort(ns)</code> die de gegeven
+              array getallen sorteert gebruik makende van het selection sort algoritme.
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <section class="category">
+        <header>
+          <h1>Insertion Sort</h1>
+        </header>
+        <section class="coding exercise" data-exercise-name="insertSorted" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">insertSorted(ns, n)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>insertSorted(ns, n)</code> die, gegeven
+              een <strong>gesorteerde</strong> array getallen <code>ns</code>
+              en een getal <code>n</code>, een nieuwe array teruggeeft
+              gelijk aan <code>ns</code> waarbij <code>n</code> werd ingevoegd
+              zodat het resultaat gesorteerd is.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="insertionSort" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">insertionSort(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>insertionSort(ns)</code> die de gegeven
+              array getallen sorteert gebruik makende van het insertion sort algoritme.
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <section class="category">
+        <header>
+          <h1>QuickSort</h1>
+        </header>
+        <section class="coding exercise" data-exercise-name="split" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">split(ns, n)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>split(ns, n)</code> die, gegeven
+              een array getallen <code>ns</code> en een getal <code>n</code>,
+              de array <code>ns</code> opsplitst in twee partities, nl.
+              enerzijds de elementen kleiner dan of gelijk aan <code>n</code>,
+              en anderzijds de elementen groter dan <code>n</code>.
+              De onderlinge volgorde van de elementen moet behouden blijven.
+            </p>
+            <p>
+              Het resultaat geef je terug als een array van twee arrays: <code>[left, right]</code>,
+              waarbij <code>left</code> alle kleinere en <code>right</code> alle strikt grotere elementen
+              gevat.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="quickSort" data-exercise-difficulty="2">
+          <header>
+            <h1 class="exercise-header">quickSort(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>quickSort(ns)</code> die de gegeven
+              array getallen sorteert gebruik makende van het quicksort algoritme.
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <section class="category">
+        <header>
+          <h1>Merge Sort</h1>
+        </header>
+        <section class="coding exercise" data-exercise-name="merge" data-exercise-difficulty="2">
+          <header>
+            <h1 class="exercise-header">merge(ks, ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>merge(ks, ns)</code> die,
+              gegeven twee <strong>gesorteerde</strong> arrays getallen,
+              een nieuwe <strong>gesorteerde</strong> array teruggeeft die alle elementen uit <code>ks</code>
+              en <code>ns</code> bevat.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="mergeSort" data-exercise-difficulty="2">
+          <header>
+            <h1 class="exercise-header">mergeSort(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>mergeSort(ns)</code> die de gegeven
+              array getallen sorteert gebruik makende van het merge sort algoritme.
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <section class="category">
+        <header>
+          <h1>Counting Sort</h1>
+        </header>
+        <section class="coding exercise" data-exercise-name="minimum" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">minimum(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>minimum(ns)</code> die gegeven
+              array getallen <code>ns</code> het kleinste element teruggeeft.
+              Je mag ervan uitgaan dat <code>ns</code> altijd minstens
+              een element bevat.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="maximum" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">maximum(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>maximum(ns)</code> die gegeven
+              array getallen <code>ns</code> het grootste element teruggeeft.
+              Je mag ervan uitgaan dat <code>ns</code> altijd minstens
+              een element bevat.
+            </p>
+          </div>
+        </section>
+
+        <section class="coding exercise" data-exercise-name="zeros" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">zeros(n)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>zeros(n)</code> die, gegeven een positief geheel getal
+              <code>n</code>, een array teruggeeft van lengte <code>n</code>, gevuld met <code>0</code>-waarden.
+            </p>
+          </div>
+        </section>
+        
+        <section class="coding exercise" data-exercise-name="countingSort" data-exercise-difficulty="2">
+          <header>
+            <h1 class="exercise-header">countingSort(ns)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+              Schrijf een functie <code>countingSort(ns)</code> die de gegeven
+              array getallen sorteert gebruik makende van het counting sort algoritme.
+            </p>
+          </div>
+        </section>
+      </section>
+    </div>
+  </body>
+</html>

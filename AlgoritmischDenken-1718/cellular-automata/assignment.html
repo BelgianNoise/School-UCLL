@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Automata</title>
+    <script src="bundle.js"></script>
+    <script src="student.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <style>
+      .automaton {
+        margin: 10px auto;
+      }
+
+      .automaton td {
+        width: 10px;
+        height: 10px;
+      }
+
+      .automaton .alive {
+        background: white;
+      }
+
+      .automaton .dead {
+        background: black;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Cellular Automata</h1>
+      <div id="commands"></div>
+      <span class="exercise-total-score"></span>
+    </header>
+    <aside>
+      <div id="exercise-overview"></div>
+      <div id="exercise-overview-collapser"><span>&#9658;</span></div>
+    </aside>
+    <div id="contents">
+      <section class="explanation">
+        <header>
+          <h1>Cellular Automata</h1>
+        </header>
+        <p>
+          Een <strong>cellular automaton</strong> is een simpele simulatie van cellen die zich volgens bepaalde regels voortplanten.
+          Laten we meteen beginnen met een simpel voorbeeld:
+        </p>
+        <table class="automaton">
+          <tr>
+            <td class="dead"></td>
+            <td class="alive"></td>
+            <td class="alive"></td>
+            <td class="dead"></td>
+            <td class="dead"></td>
+            <td class="alive"></td>
+          </tr>
+        </table>
+        <p>
+          Dit stelt de "wereld" voor. De witte vakjes stellen levende cellen voor, de zwarte vakjes zijn leeg.
+          We kunnen nu gedragsregels defini&euml;ren. Stel dat we zeggen dat een cel zich voorplant indien het exact
+          &eacute;&eacute;n buur heeft. Indien er 2 buren zijn sterft de cel vanwege overbevolking. Een alleenstaande cel
+          sterft eveneens spontaan af (natuurlijke oorzaak.) We kunnen dan uitrekenen hoe de volgende generatie eruit zal zien:
+        </p>
+        <table class="automaton">
+          <tr>
+            <td class="dead"></td>
+            <td class="alive"></td>
+            <td class="alive"></td>
+            <td class="dead"></td>
+            <td class="dead"></td>
+            <td class="dead"></td>
+          </tr>
+        </table>
+        <p>
+          De twee linkercellen uit de eerste generatie hebben zich kunnen voortplanten, terwijl de rechtercel is gestorven aan eenzaamheid.
+          Als we weer eens een generatie verder uitrekenen, komen we opnieuw uit:
+        </p>
+        <table class="automaton">
+          <tr>
+            <td class="dead"></td>
+            <td class="alive"></td>
+            <td class="alive"></td>
+            <td class="dead"></td>
+            <td class="dead"></td>
+            <td class="dead"></td>
+          </tr>
+        </table>
+        <p>
+          We hebben een zogenaamde <strong>fixed point</strong> bereikt, nl. een situatie waar elke generatie exact gelijk is aan de voorgaande.
+          Toegegeven, dit was een vrij saai voorbeeld. We kunnen echter andere regels vinden, die potentieel leiden tot veel interessanter gedrag.
+          <a href="https://www.amazon.co.uk/New-Kind-Science-Stephen-Wolfram-ebook/dp/B01N1I83V8/ref=sr_1_2?ie=UTF8&qid=1505814794&sr=8-2&keywords=a+new+kind+of+science"></a>Sommige mensen</a>
+          gaan zelfs zo ver als te zeggen dat ons ganse universum in feite niks meer is dan een <a href="https://xkcd.com/505/">cellulaire automaton</a>, maar waarvan we de exacte regels
+          nog niet ontdekt hebben.
+        </p>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="triplet" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">triplet(ns, index)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Gegeven een array <code>ns</code> en een positief geheel getal <code>index</code>.
+            Geef een triplet terug dat het element uit <code>ns</code> met index <code>index</code> teruggeeft,
+            samen met zijn twee buren.
+          </p>
+          <p>
+            Indien <code>index</code> verwijst naar een element "aan de rand" van de array (m.a.w. het eerste en laatste element),
+            kies dan <code>0</code> als waarde voor de ontbrekende buren.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="rule1" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">rule1(ns)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            In de uitleg hanteerden we als regel "indien een vakje en zijn buren tezamen exact 2 levende cellen bevat,
+            zal het vakje in de volgende generatie een levende cel bevatten, zoniet zal het leeg zijn."
+            We wagen ons nu aan een nieuwe regel.
+          </p>
+          <p>
+            <code>rule1</code> verwacht een array van drie elementen (telkens <code>0</code> of <code>1</code>).
+            Deze stellen een vakje en zijn twee buren voor. <code>rule1</code> berekent op basis van deze input
+            de inhoud van het vakje in de volgende generatie. De regel gaat als volgt: indien er 1 of 2 levende cellen
+            aanwezig zijn, moet <code>rule1</code> aangeven dat het vakje in de nieuwe generatie een levende cel zal bevatten.
+            In het geval van 0 of 3 levende cellen zal het vakje leeg zijn.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="automaton1" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">automaton1(ns)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            <code>automaton1</code> past <code>rule1</code> toe op een ganse generatie. <code>ns</code> is
+            een array van willekeurige lengte waarvan de elementen <code>0</code> of <code>1</code> zijn.
+            Reken voor elk vakje (gebruik makende van <code>triplet</code> en <code>rule1</code>) uit
+            wat elk vakje in de volgende generatie zal bevatten.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="generations1" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">generations1(initial, generations)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Gegeven een inti&euml;le toestand <code>initial</code> en een gewenst aantal generaties <code>generations</code>,
+            voeg alle opeenvolgende generaties samen in een array. Je moet dus een array van arrays
+            teruggeven, waarvan het eerste element gelijk is aan <code>initial</code>, het 2de
+            gelijk aan de generatie die volgt op <code>initial</code>, etc.
+          </p>
+        </div>
+      </section>
+
+      <section class="explanation">
+        <header>
+          <h1>2D Cellular Automata</h1>
+        </header>
+        <p>
+          In de voorgaande oefeningen hadden we te maken met eendimensionale automata:
+          de wereld werd voorgesteld door een simpele array. Als een levende cel
+          zich zou kunnen verplaatsen, zou het zich enkel naar links of rechts kunnen verplaatsen.
+        </p>
+        <p>
+          We upgraden onze simulaties naar een 2D wereld:
+        </p>
+        <table class="automaton">
+          <tr>
+            <td class="dead"></td>
+            <td class="alive"></td>
+            <td class="alive"></td>
+            <td class="dead"></td>
+            <td class="dead"></td>
+            <td class="alive"></td>
+          </tr>
+          <tr>
+            <td class="dead"></td>
+            <td class="dead"></td>
+            <td class="alive"></td>
+            <td class="alive"></td>
+            <td class="dead"></td>
+            <td class="alive"></td>
+          </tr>
+          <tr>
+            <td class="alive"></td>
+            <td class="dead"></td>
+            <td class="dead"></td>
+            <td class="dead"></td>
+            <td class="alive"></td>
+            <td class="alive"></td>
+          </tr>
+          <tr>
+            <td class="dead"></td>
+            <td class="dead"></td>
+            <td class="alive"></td>
+            <td class="alive"></td>
+            <td class="dead"></td>
+            <td class="dead"></td>
+          </tr>
+          <tr>
+            <td class="alive"></td>
+            <td class="alive"></td>
+            <td class="alive"></td>
+            <td class="alive"></td>
+            <td class="dead"></td>
+            <td class="dead"></td>
+          </tr>
+        </table>
+        <p>
+          Een 2D wereld geeft ons meer keuze op gebied van voortplantingsregels. Een van de bekendste simulaties
+          is <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conways' Game of Life</a>:
+          een kleine reeks simpele regels geeft aanleiding tot een grote diversiteit aan "levensvormen", groepen
+          cellen die een organisme lijken te vormen.
+        </p>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="countNeighbors" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">neighbors(grid, x, y)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Gegeven een 2D array <code>grid</code> gevuld met <code>0</code>'en en <code>1</code>'en
+            en een positie met co&ouml;rdinaten (<code>x</code>, <code>y</code>), tel hoeveel
+            buurvakjes een levende cel bevatten. Met "buurvakjes" bedoelen we de 8 vakjes
+            rondom het vakje met de gegeven co&ouml;rdinaten.
+          </p>
+          <p>
+            Indien het vakje met de gegeven co&ouml;rdinaten zich aan een rand bevindt, hoef je enkel rekening
+            te houden met bestaande buurvakjes. Bv. een vakje in een hoek van de wereld heeft slechts 3 buren.
+          </p>
+          <p>
+            <code>grid</code> is gegeven als een array van kolommen. (<code>0</code>, <code>0</code>) komt overeen
+            met de linkerbovenhoek.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="gameOfLife" data-exercise-difficulty="1">
+          <header>
+            <h1 class="exercise-header">gameOfLife(grid)</h1>
+          </header>
+          <div class="exercise-description">
+            <p>
+            </p>
+          </div>
+        </section>
+    </div>
+  </body>
+</html>

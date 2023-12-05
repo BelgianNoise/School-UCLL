@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Arrays</title>
+    <script src="bundle.js"></script>
+    <script src="student.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Arrays</h1>
+      <div id="commands"></div>
+      <span class="exercise-total-score"></span>
+    </header>
+    <aside>
+      <div id="exercise-overview"></div>
+      <div id="exercise-overview-collapser"><span>&#9658;</span></div>
+    </aside>
+    <div id="contents">
+      <section class="explanation">
+        <header>
+          <h1>Arrays</h1>
+        </header>
+        <p>
+          Stel dat je het gemiddelde van vier getallen wil berekenen, dan kan je JavaScript gebruiken om dit uit te rekenen:
+        </p>
+        <text-area class="raw-source" data-source-function="avgExample1"></text-area>
+        <p>
+          Als je deze berekening meermaals wil uitvoeren, kan je je JavaScriptcode veralgemenen door gebruik te maken van parameters:
+        </p>
+        <text-area class="raw-source" data-source-function="avgExample2"></text-area>
+        <p>
+          Je kan hiermee het gemiddelde uitrekenen van vier willekeurige getallen. Wat echter als je vijf getallen hebt?
+          Moeten we dan een nieuwe functie schrijven met vijf parameters? Moeten we telkens hetzelfde doen voor elk mogelijk aantal getallen?
+        </p>
+        <p>
+          Om dit probleem op te lossen, biedt JavaScript <strong>arrays</strong> aan. Een array kan je zien
+          als een lijst van variabelen. Zo kan je een array van 10 lang maken en kan je hier 10 waarden
+          (getallen, booleans, strings, of zelfs andere arrays) in bewaren.
+        </p>
+        <p>
+          Een array kent posities toe aan zijn elementen. Zo kan men aan een array vragen wat zijn eerste, tweede, etc. element is.
+          Dit gebeurt d.m.v. een volgnummer of <strong>index</strong>. Het eerste element heeft index <code>0</code>, het tweede index <code>1</code>, etc.
+          Let dus op dat je bij <code>0</code> begint te tellen en niet bij <code>1</code>.
+        </p>
+        <p>
+          De basisoperaties op arrays zijn:
+        </p>
+        <ul>
+          <li>
+            Aanmaak van een array van lengte <code>n</code> gebeurt met <code>new Array(n)</code>.
+          </li>
+          <li>
+            Vaak krijg je een array van buitenaf en zal je willen weten hoeveel elementen er in de array opgeborden zijn.
+            Het aantal elementen vraag je met <code>xs.length</code>, waarbij <code>xs</code> de variabele is die de array bevat.
+          </li>
+          <li>
+            Indexeren: gegeven een array <code>xs</code> kan je het element met index <code>i</code> opvragen d.m.v. <code>xs[i]</code>.
+            Let op dat de index geldig is: het eerste element heeft index <code>0</code> en het laatste element <code>xs.length - 1</code>.
+            Enkel indices tussen deze twee extremen zijn geldig. Vraag dus niet het 100ste element van een array van 10 lang.
+            Deze fout wordt vaak gemaakt en spijtig genoeg zal JavaScript hier geen duidelijke foutmelding over geven!
+          </li>
+          <li>
+            Schrijven naar een array gebeurt met een gelijkaardige syntax: <code>xs[i] = waarde</code>. Deze code overschrijft
+            het element met index <code>i</code> met de <code>waarde</code>.
+          </li>
+        </ul>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="first">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="fourth" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">fourth(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>fourth(xs)</code> die gegeven een array <code>xs</code>
+            het vierde element ervan teruggeeft. Je mag ervan uitgaan dat <code>xs</code>
+            altijd minstens vier elementen bevat.
+          </p>
+        </div>
+      </section>
+      
+      <section class="interpretation exercise" data-exercise-name="length">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+            
+      <section class="coding exercise" data-exercise-name="last" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">last(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>last(xs)</code> die gegeven een array <code>xs</code>
+            het laatste element ervan teruggeeft. Je mag ervan uitgaan
+            dat <code>xs</code> minstens &eacute;&eacute;n element bevat.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="sum3" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">sum3(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>sum3(xs)</code> die gegeven een array <code>xs</code>
+            die drie getallen bevat, de som van deze getallen teruggeeft.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="max2" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">max2(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>max2(xs)</code> die gegeven een array <code>xs</code>
+            die twee getallen bevat, het grootste van deze getallen teruggeeft.
+          </p>
+        </div>
+      </section> 
+
+      <section class="interpretation exercise" data-exercise-name="sum">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="product" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">product(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>product(xs)</code> die gegeven een array
+            van getallen <code>xs</code>, het product ervan uitrekent.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="contains" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">contains(xs, x)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>contains(xs, x)</code> die gegeven een array
+            <code>xs</code> en een waarde <code>x</code> nagaat of <code>x</code> deel uitmaakt
+            van <code>xs</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="all" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">all(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>all(xs)</code> die nagaat of alle elementen gelijk zijn
+            aan <code>true</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="any" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">any(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>any(xs)</code> die nagaat of er een element
+            is in <code>xs</code> gelijk aan <code>true</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isIncreasing" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">isIncreasing(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isIncreasing(xs)</code> gegeven een array
+            van getallen <code>xs</code> nagaat of de elementen in stijgende
+            volgorde geordend staan. Gelijke elementen zijn toegestaan:
+            <code>[1, 1, 1]</code> wordt aanzien als een stijgende array.
+          </p>
+        </div>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="doubleEach">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="swap" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">swap(xs, i, j)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>swap(xs)</code> die gegeven een array <code>xs</code>
+            en twee indices <code>i</code> en <code>j</code>, de elementen
+            met deze indices van plaats verwisselt.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="reverse" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">reverse(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>reverse(xs)</code> die gegeven een array <code>xs</code>
+            de volgorde van de elementen omkeert.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="sameNumbers" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">sameNumbers(xs, ys)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>sameNumbers(xs, ys)</code> die gegeven twee
+            arrays getallen nagaat of de arrays dezelfde elementen in dezelfde volgorde bevat.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="range" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">range(from, to)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>range(from, to)</code> die gegeven twee
+            gehele getallen <code>from</code> en <code>to</code> een array
+            teruggeeft met alle getallen gaande van <code>from</code>
+            tot en met <code>to</code> bevat.
+          </p>
+        </div>
+      </section>
+        
+      <section class="explanation">
+        <header>
+          <h1>Extra Operaties</h1>
+        </header>
+        <p>
+          Arrays in JavaScript bieden tal van <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">hulpoperaties</a>, waaronder
+        </p>
+        <ul>
+          <li>
+            <code>concat</code> laat toe arrays samen te voegen: <code>xs.concat(ys)</code> geeft een <strong>nieuwe</strong> array terug waarvan de elementen
+            gelijk zijn aan die van <code>xs</code> gevolgd door die van <code>ys</code>.
+          </li>
+          <li>
+            <code>xs.pop()</code> verwijdert het laatste element en geeft dit terug als resultaat. Dit wijzigt m.a.w. de lengte van de array.
+          </li>
+          <li>
+            <code>xs.push(x)</code> voegt <code>x</code> toe achteraan de array.
+          </li>
+          <li>
+            <code>xs.shift()</code> verwijdert het eerste element en geeft dit terug als resultaat.
+          </li>
+          <li>
+            <code>xs.unshift(x)</code> voegt een waarde <code>x</code> toe aan het begin van de array <code>xs</code>.
+          </li>
+          <li>
+            <code>xs.slice(i, j)</code> kopieert de elementen met indices <code>i</code>, <code>i+1</code>, &hellip;, <code>j-1</code> naar een nieuwe array.
+            Merk op dat het element met index <code>j</code> zelf <strong>niet</strong> mee gekopieerd wordt.
+          </li>
+        </ul>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="rotate">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="slice">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+        
+      <section class="coding exercise" data-exercise-name="transfer" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">transfer(xs, ys)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>transfer(xs, ys)</code> twee
+            arrays <code>xs</code> en <code>ys</code> ontvangt.
+          </p>
+          <ul>
+            <li>
+              Indien <code>xs</code> niet leeg is, wordt het laatste element uit <code>xs</code>
+              verwijdert en dit plaats vooraan in <code>ys</code>. De functie moet dan
+              <code>true</code> teruggeven.
+            </li>
+            <li>
+              Indien <code>xs</code> leeg is, moet <code>ys</code> ongewijzigd blijven. De functie
+              moet in dit geval <code>false</code> teruggeven.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="split" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">split(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>split(xs)</code> die de gegeven array <code>xs</code>
+            splitst in twee deelrijen van "ongeveer gelijke" lengte. We noemen
+            deze twee deelrijen <code>left</code> en <code>right</code>.
+          </p>
+          <ul>
+            <li>
+              Indien <code>xs</code> een even aantal elementen telt, moeten
+              <code>left</code> en <code>right</code> even lang zijn.
+            </li>
+            <li>
+              Indien <code>xs</code> een oneven aantal elementen bevat,
+              moet <code>left</code> &eacute;&eacute;n langer zijn dan <code>right</code>.
+            </li>
+            <li>
+              <code>left</code> en <code>right</code> samenvoegen moet weer <code>xs</code> opleveren.
+            </li>
+            <li>
+              Vermits functies in Javascript telkens maar &eacute;&eacute;n
+              waarde kunnen teruggeven, moeten <code>left</code> en <code>right</code>
+              samengebundeld worden in een nieuwe array die dan fungeert als returnwaarde.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="missingNumber" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">missingNumber(ns)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>missingNumber(ns)</code> die het ontbrekende getal
+            in de array getallen <code>ns</code> teruggeeft. <code>ns</code> is verondersteld
+            alle getallen van $1$ t.e.m. $n$ te bevatten.
+            Bijvoorbeeld, stel <code>ns = [1, 2, 4, 5]</code>: het ontbrekend getal is <code>3</code>.
+            De volgorde maakt niet uit, dus indien <code>ns = [2, 4, 5, 1]</code>, moet de functie
+            nog steeds <code>3</code> teruggeven.
+        </div>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="splitString">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="parseDate" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">parseDate(str)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>parseDate(str)</code> die
+            een string <code>str</code> ontvangt van de vorm
+            "<span style="font-style: italic;">getal</span>/
+            <span style="font-style: italic;">getal</span>/
+            <span style="font-style: italic;">getal</span>"
+            en deze omzet naar een array van drie getallen.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="evaluate" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">evaluate(str)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>evaluate(str)</code> die wiskundige uitdrukkingen uitrekenen.
+            De enige operaties die je moet ondersteunen zijn <code>+</code> en <code>*</code>.
+          </p>
+        </div>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="isPermutation" data-exercise-difficulty="3">
+        <header>
+          <h1 class="exercise-header">isPermutation(xs, ys)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isPermutation(xs, ys)</code> die,
+            gegeven twee arrays <code>xs</code> en <code>ys</code>, nagaat
+            of <code>xs</code> en <code>ys</code> permutaties van elkaar zijn.
+            Dit betekent dat ze dezelfde elementen bevatten, maar mogelijk
+            in een andere volgorde. Bijvoorbeeld, <code>[1, 2, 3]</code> is
+            een permutatie van <code>[3, 1, 2]</code>.
+          </p>
+        </div>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="longestIncreasingSubsequence"
+                                       data-exercise-difficulty="3">
+        <header>
+          <h1 class="exercise-header">longestIncreasingSubsequence(ns)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>longestIncreasingSubsequence(ns)</code> die gegeven
+            een array van getallen <code>xs</code> zoekt naar de langste stijgende deelrij.
+            Indien er meerdere zulke deelrijen bestaan, wordt de eerst voorkomende teruggegeven.
+            Zo bevat <code>[5, 6, 7, 1, 2, 3]</code> twee langste deelrijen, nl.
+            <code>[5, 6, 7]</code> en <code>[1, 2, 3]</code>. In dit geval moet de functie
+            <code>[5, 6, 7]</code> teruggeven.
+          </p>
+          <p>
+            Met deelrij bedoelen we een ononderbroken reeks elementen van <code>xs</code>:
+            zo is <code>[1, 2, 3]</code> een deelrij van <code>[0, 1, 2, 3, 4]</code>, maar
+            niet van <code>[1,0,2,0,3]</code>.
+          </p>
+          <p>
+            Gelijke elementen beschouwen we als stijgend: zo is <code>[1, 1, 2, 2, 3, 3]</code>
+            een stijgende rij.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="mastermind"
+                                       data-exercise-difficulty="3">
+        <header>
+          <h1 class="exercise-header">mastermind(secret, guess)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Mastermind bestaat erin dat je een geheime code moet weten te vinden.
+            Deze code bestaat uit $N$ cijfers.
+            Je mag hiervoor zelf meermaals gokken. Voor elke gok krijg je feedback in de vorm van twee getallen:
+          </p>
+          <ul>
+            <li>
+              Het eerste getal geeft aan hoeveel cijfers je correct gegokt hebt.
+            </li>
+            <li>
+              Het tweede getal is het aantal cijfers die wel voorkomen in de code, maar op een andere plaats.
+            </li>
+          </ul>
+          <p>
+            Stel dat de code <code>1 2 3 4</code> is en je gokt <code>1 5 3 2</code>. De feedback die je hierop krijgt is <code>1 2</code>:
+          </p>
+          <ul>
+            <li>Het eerste cijfer <code>1</code> is juist en staat op de juiste positie.</li>
+            <li>
+              De cijfers <code>2</code> en <code>3</code> komen in de code voor, maar in je gok staan ze op de vierde en derde plaats, respectievelijk,
+              terwijl ze op de tweede en derde plaats horen.
+            </li>
+          </ul>
+          <p>
+            Schrijf een functie <code>mastermind(secret, guess)</code> die, gegeven twee arrays getallen <code>secret</code>
+            en <code>guess</code>, de feedback teruggeeft als een array van twee getallen.
+          </p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

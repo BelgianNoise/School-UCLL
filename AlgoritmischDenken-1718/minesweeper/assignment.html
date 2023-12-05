@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Minesweeper</title>
+    <script src="bundle.js"></script>
+    <script src="student.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>      
+    <style>
+      .grid td {
+        width: 1em;
+        height: 1em;
+        border: 2px solid black;
+        margin: 1px;
+      }
+
+      .grid .covered {
+        background: black;
+      }
+
+      .grid .uncovered {
+        background: white;
+      }
+
+      .grid .flagged {
+        background: #FAA;
+      }
+
+      .grid .bomb {
+        border-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Minesweeper</h1>
+      <div id="commands"></div>
+      <span class="exercise-total-score"></span>
+    </header>
+    <aside>
+      <div id="exercise-overview"></div>
+      <div id="exercise-overview-collapser"></div>
+    </aside>
+    <div id="contents">
+      <section class="explanation">
+        <header>
+          <h1>Minesweeper</h1>
+        </header>
+        <p>
+          Minesweeper speelt men op een rooster bestaande uit $W \times H$ cellen. Per cel moet men twee stukken informatie bewaren:
+        </p>
+        <ul>
+          <li>
+            Bevat de cel een bom?
+          </li>
+          <li>
+            De status van de cel. Er zijn hier drie mogelijkheden voor:
+            <ul>
+              <li>
+                De cel is "gesloten". Dit is de beginstatus van elke cel.
+              </li>
+              <li>
+                De cel werd "geopend": hiermee bedoelt men dat de speler op de cel heeft geklikt, denkende dat er geen bom onder lag.
+              </li>
+              <li>
+                De cel is "gemarkeerd": de speler denkt dat er een bom ligt in deze cel en heeft de cel gemarkeerd met een vlaggetje.
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          Het doel van het spel is alle cellen die geen bom bevatten te openen.
+        </p>
+        <p>
+          We willen de drie mogelijke statussen in code kunnen voorstellen. In principe kunnen hier willekeurige voorstellingen voor gebruikt worden,
+          maar binnen deze opgave kiezen we ervoor dit met getallen te doen:
+        </p>
+        <ul>
+          <li>
+            Gesloten: <code>0</code>.
+          </li>
+          <li>
+            Open: <code>1</code>.
+          </li>
+          <li>
+            Gemarkeerd: <code>2</code>.
+          </li>
+        </ul>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="covered" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">covered()</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>covered()</code> die de voorstelling van gesloten vakjes teruggeeft, nl. <code>0</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="uncovered" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">uncovered()</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>uncovered()</code> die de voorstelling van geopende vakjes teruggeeft, nl. <code>1</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="flagged" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">flagged()</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>flagged()</code> die de voorstelling van gemarkeerde vakjes teruggeeft, nl. <code>2</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="explanation">
+        <header>
+          <h1>Abstractie</h1>
+        </header>
+        <p>
+          Vanaf nu moet je vergeten wat de voorstellingen zijn voor de verschillende celstatussen. Als je het bv. wil hebben
+          over een geopende cel, moet je telkens gebruik maken van de waarde teruggegeven door <code>uncovered()</code>.
+        </p>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="createCell" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">createCell(bomb, status)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>createCell(bomb, status)</code> die,
+            gegeven een boolean <code>bomb</code> en een status <code>status</code>,
+            deze twee stukken informatie groepeert in een "celobject", wat voor deze
+            opgave een array <code>[bomb, status]</code> is. M.a.w. het eerste
+            element van de array geeft aan of de cel een bom bevat,
+            het tweede wat de status (open, gesloten, gemarkeerd) is.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="containsBomb" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">containsBomb(cell)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>containsBomb(cell)</code> die,
+            gegeven een cel <code>cell</code> (d.i. een array zoals werd aangemaakt door <code>createCell</code>),
+            aangeeft of deze cel een bom bevat.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="statusOf" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">statusOf(cell)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>statusOf(cell)</code> die,
+            gegeven een cel <code>cell</code> (d.i. een array zoals werd aangemaakt door <code>createCell</code>),
+            de status ervan teruggeeft.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="setBomb" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">setBomb(cell, bomb)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>setBomb(cell, bomb)</code> die,
+            gegeven een cel <code>cell</code> en een boolean <code>bomb</code>,
+            een bom toevoegt aan <code>cell</code> indien <code>bomb</code> gelijk is aan
+            <code>true</code>, zoniet de bom verwijdert.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="createGrid" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">createGrid(width, height)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>createGrid(width, height)</code> die een rooster cellen
+            van <code>width</code> breed en <code>height</code> hoog maakt. Stel dit
+            rooster voor als een array van kolommen.
+          </p>
+          <p>
+            We stellen een cel visueel als volgt voor:
+          </p>
+          <ul>
+            <li>
+              Cellen zonder bom hebben een zwarte rand. Die met een bom hebben een rode rand.
+            </li>
+            <li>
+              Geopende cellen zijn wit gekleurd. Gesloten cellen zijn zwart. Gemarkeerde cellen zijn rood.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="gridWidth" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">gridWidth(grid)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>gridWidth(grid)</code> die het aantal kolommen
+            het rooster <code>grid</code> teruggeeft.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="gridHeight" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">gridHeight(grid)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>gridHeight(grid)</code> die het aantal rijen
+            het rooster <code>grid</code> teruggeeft.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="createPosition" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">createPosition(x, y)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            We voeren een nieuw type object in, nl. posities. Een positie
+            wordt gekenmerkt door twee co&ouml;rdinaten <code>x</code> en <code>y</code>.
+          </p>
+          <p>
+            Schrijf een functie <code>createPosition(x, y)</code> die een positieobject aanmaakt.
+            Dit stellen we voor door een array <code>[x, y]</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="x" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">x(position)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>x(position)</code> die, gegeven een positie,
+            de x-co&ouml;rdinaat ervan teruggeeft.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="y" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">y(position)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>y(position)</code> die, gegeven een positie,
+            de y-co&ouml;rdinaat ervan teruggeeft.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isInsideGrid" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">isInsideGrid(grid, position)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isInsideGrid(grid, position)</code> die nagaat
+            of de positie <code>position</code> valt binnen de grenzen van het rooster <code>grid</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="gridAt" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">gridAt(grid, position)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>gridAt(grid, position)</code> die de cel
+            op de gegeven positie <code>position</code> in het rooster <code>grid</code> teruggeeft.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="neighbors" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">neighbors(position)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>neighbors(position)</code> die de posities van alle acht buren
+            van de positie <code>position</code> teruggeeft. Negatieve co&ouml;rdinaten zijn toegelaten.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="countBombsAround" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">countBombsAround(grid, position)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>countBombsAround(grid, position)</code> die telt hoeveel bommen er rondom
+            de positie <code>position</code> zijn in het rooster <code>grid</code>. Indien er
+            een bom is op <code>position</code> zelf, mag deze niet meegeteld worden.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isSolved" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">isSolved(grid)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isSolved(grid)</code> die nagaat of het rooster <code>grid</code>
+            opgelost is. Dit is het geval indien alle cellen die geen bom bevatten werden geopend
+            en alle cellen met een bom gemarkeerd zijn.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="uncover" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">uncover(grid, position)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>uncover(grid, position)</code> die de cel op positie <code>position</code>
+            in het rooster <code>grid</code> opent.
+          </p>
+          <ul>
+            <li>
+              Indien de cel reeds geopend werd, hoeft er niets te gebeuren.
+            </li>
+            <li>
+              Indien de cel geen bom bevat en geen bommen rondom zich heeft, moeten alle buren eveneens geopend woren.
+              Dit gaat zo door tot alle cellen rondom <code>position</code> met bombCount 0 geopend zijn.
+            </li>
+          </ul>
+          <p>
+            Deze functie moet de gegeven <code>grid</code> zelf wijzigen.
+          </p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+*filter
+:INPUT ACCEPT [44:2627]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [24:12853]
+:sshguard - [0:0]
+COMMIT

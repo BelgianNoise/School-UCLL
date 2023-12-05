@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Booleans</title>
+    <script src="bundle.js"></script>
+    <script src="student.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+    
+    <style>
+      .operators {
+        margin: 1em auto;
+        text-align: center;
+        border-collapse: collapse;
+        border-spacing: 1em;
+      }
+
+      .operators tr {
+        height: 2em;
+      }
+
+      .operators th {
+        border-bottom: 1px solid black;
+      }
+
+      .operators td {
+        padding: 0em 1em;
+      }
+      
+      .operators td:nth-child(1) {
+        text-align: left;
+        font-weight: bold;
+      }
+      
+      .operators td:nth-child(3) {
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Booleans</h1>
+      <div id="commands"></div>
+      <span class="exercise-total-score"></span>
+    </header>
+    <aside>
+      <div id="exercise-overview"></div>
+      <div id="exercise-overview-collapser"><span>&#9658;</span></div>
+    </aside>
+    <div id="contents">
+      <section class="explanation">
+        <header>
+          <h1>Booleaanse waarden</h1>
+        </header>
+        <p>
+          Totnogtoe werkten alle operatoren in op getallen en leverden
+          ze als resultaat ook telkens een nieuw getal op. Zo neemt
+          de <code>+</code> operator twee getallen als operanden
+          en is de som van deze twee getallen opnieuw een getal.
+          Maar stel dat we twee getallen vergelijken, bv. <code>5 &lt; 10</code>, wat
+          is hier het resultaat van?
+        </p>
+        <p>
+          Booleaanse waarden bieden hier een antwoord op. Er bestaan slechts twee
+          booleaanse waarden, genaamd <code>true</code> en <code>false</code>, dewelke
+          respectievelijk waar en vals voorstellen. Zo levert <code>5 &lt; 10</code> de waarde
+          <code>true</code> op, omdat 5 inderdaad kleiner is dan 10. Zouden
+          we <code>5 &gt; 10</code> schrijven, dan levert dit <code>false</code> op.
+        </p>
+        <p>
+          Javascript biedt onderstaande vergelijkingsoperatoren. Elk van hen
+          verwacht twee getallen als operanden en leveren een booleaanse waarde op.
+        </p>
+        <table class="operators">
+          <tr>
+            <th></th>
+            <th>Wiskundige vorm</th>
+            <th>Javascript syntax</th>
+          </tr>
+          <tr>
+            <td>
+              Kleiner dan 
+            </td>
+            <td>
+              $x &lt; y$
+            </td>
+            <td>
+              x &lt; y
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Kleiner dan of gelijk aan
+            </td>
+            <td>
+              $x \leq y$
+            </td>
+            <td>
+              x &lt;= y
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Groter dan
+            </td>
+            <td>
+              $x &gt; y$
+            </td>
+            <td>
+              x &gt; y
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Groter dan of gelijk aan
+            </td>
+            <td>
+              \[ x \geq y \]
+            </td>
+            <td>
+              x &gt;= y
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Gelijk aan
+            </td>
+            <td>
+              \[ x = y \]
+            </td>
+            <td>
+              x === y
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Niet gelijk aan
+            </td>
+            <td>
+              \[ x \neq y \]
+            </td>
+            <td>
+              x != y
+            </td>
+          </tr>
+        </table>
+        <p>
+          Zoals er operatoren <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>,
+          etc. bestaan voor getallen, zo bestaan er eveneens operatoren die inwerken
+          op booleaanse waarden.
+        </p>
+        <table class="operators">
+          <tr>
+            <th></th>
+            <th>Wiskundige vorm</th>
+            <th>Javascript syntax</th>
+          </tr>
+          <tr>
+            <td>
+              Conjunctie
+            </td>
+            <td>
+              $x \wedge y$ 
+            </td>
+            <td>
+              x &amp;&amp; y
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Disjunctie
+            </td>
+            <td>
+              $x \vee y$ 
+            </td>
+            <td>
+              x || y
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Negatie
+            </td>
+            <td>
+              $\neg x$ 
+            </td>
+            <td>
+              !x
+            </td>
+          </tr>
+        </table>
+        <ul>
+          <li>
+            Conjunctie komt overeen met "en": <code>x &amp;&amp; y</code> is enkel waar
+            als zowel <code>x</code> en <code>y</code> waar zijn.
+          </li>
+          <li>
+            Disjunctie staat voor "of": <code>x || y</code> is waar zodra minstens &eacute;&eacute;
+            van beide operanden waar is.
+          </li>
+          <li>
+            Negatie keert de waarheidswaarde om: <code>true</code> wordt <code>false</code>, en vice versa.
+          </li>
+        </ul>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="and">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="or">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="not">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isPositive" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">isPositive(x)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isPositive(x)</code> die, gegeven een getal <code>x</code>,
+            <code>true</code> teruggeeft indien <code>x</code> positief is en <code>false</code>
+            indien niet. We beschouwen <code>0</code> als positief zijnde.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="divides" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">divides(x, y)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>divides(x, y)</code> die gegeven
+            twee getallen <code>x</code> en <code>y</code> nagaat
+            of <code>x</code> een deler is van <code>y</code>.
+          </p>
+        </div>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="isInteger" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">isInteger(x)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isInteger(x)</code> die, gegeven een getal <code>x</code>,
+            <code>true</code> teruggeeft indien <code>x</code> een geheel getal is en <code>false</code>
+            in het andere geval.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isPerfectSquare" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">isPerfectSquare(x)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isPerfectSquare(x)</code> die, gegeven een getal <code>x</code>,
+            <code>true</code> teruggeeft indien <code>x</code> een volkomen kwadraat is en <code>false</code>
+            indien niet. <strong>Maak hierbij gebruik van <code>isInteger</code>.</strong>
+          </p>
+          <p>
+            Een getal is een volkomen kwadraat indien zijn vierkantswortel een geheel getal is.
+          </p>
+        </div>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="inInterval" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">inInterval(x, a, b)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>inInterval(x, a, b)</code> die, gegeven drie getallen
+            <code>x</code>, <code>a</code> en <code>b</code>,
+            <code>true</code> teruggeeft indien <code>x</code>
+            zich in het interval $[a, b]$ bevindt, en <code>false</code> indien niet.
+          </p>
+          <p>
+            Indien $a > b$, dan is het interval $[a, b]$ leeg en kan <code>x</code> er zich nooit in bevinden.
+          </p>
+        </div>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="between" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">between(x, a, b)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>between(x, a, b)</code> die, gegeven drie getallen
+            <code>x</code>, <code>a</code> en <code>b</code>,
+            <code>true</code> teruggeeft indien <code>x</code>
+            zich tussen <code>a</code> en <code>b</code> bevindt en <code>false</code>
+            indien niet. <strong>Maak hierbij gebruik van <code>inInterval</code>.</strong>
+          </p>
+          <p>
+            Het verschil met de voorgaande oefening is wat er gebeurt indien $a > b$:
+            daar waar <code>inInterval(5, 10, 0)</code> <code>false</code> oplevert,
+            moet <code>between(5, 10, 0)</code> <code>true</code> opleveren.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="has31Days" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">has31Days(month)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie die, gegeven een maand <code>month</code>, nagaat
+            of deze maand 31 dagen telt. Januari wordt voorgesteld door 1, februari door 2, etc.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isLeapYear" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">isLeapYear(year)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isLeapYear(year)</code> die, gegeven een getal
+            <code>year</code> dat een jaartal voorstelt, nagaat of <code>year</code>
+            een schrikkeljaar is.
+          </p>
+          <p>
+            Indien het jaartal deelbaar is door 4 is het een schrikkeljaar, behalve
+            indien het deelbaar is door 100. Indien het echter deelbaar is door 400,
+            is het toch wel een schrikkeljaar.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="has28Days" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">has28Days(month, year)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie die, gegeven een maand en een jaartal, nagaat
+            of deze maand 28 dagen telt. M.a.w. <code>month</code> moet februari voorstellen
+            en <code>year</code> mag geen schrikkeljaar zijn.
+          </p>
+          <p>
+            Om deze functie te implementeren moet je je eerder gedefinieerde functie
+            <code>isLeapYear</code> oproepen. Copy paste onder geen omstandigheden
+            de code van <code>isLeapYear</code> naar deze functie.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isValidDate" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">isValidDate(day, month, year)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>isValidYear(day, month, year)</code> die,
+            gegeven een dag, maand en jaar, nagaat of dit een geldige datum is.
+            De functie moet rekening houden met het aantal dagen per maand
+            en eveneens met schrikkeljaren.
+          </p>
+          <p>
+            Hoewel het zeker mogelijk is om deze functie in &eacute;&eacute;n lijn
+            neer te schrijven, is het sterk aangeraden gebruik te maken van hulpfuncties,
+            zoals degene die je in vorige oefeningen al hebt ge&iuml;mplementeerd.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="xor" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">xor(x, y)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>xor(x, y)</code> die <code>true</code> teruggeeft
+            indien exact &eacute;&eacute;n van beide argumenten <code>true</code> is.
+            Indien ze beide <code>false</code> zijn, of beide <code>true</code>,
+            moet de functie <code>false</code> teruggeven.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="majority" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">majority(x, y, z)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Er wordt een stemming gehouden tussen drie personen. Elke persoon
+            kan voor of tegen stemmen (<code>true</code> of <code>false</code>, respectievelijk).
+            Schrijf een functie <code>majority(x, y, z)</code> die, gegeven
+            drie booleans <code>x</code>, <code>y</code> en <code>z</code> die de stemmen voorstellen,
+            <code>true</code> teruggeeft indien een meerderheid voor heeft gestemd, zoniet <code>false</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="light" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">light(x, y, z)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            In een grote ruimte staat centraal een lamp geplaatst.
+            Je wil deze lamp kunnen bedienen zonder al te ver te moeten lopen.
+            Je installeert hiervoor drie lichtschakelaars gespreid over de ruimte.
+          </p>
+          <p>
+            Elke lichtschakelaar kan aan of uit staan. De toestand van een lichtschakelaar
+            kan je dus voorstellen door een boolean.
+          </p>
+          <p>
+            De lamp krijgt de toestand van elke lichtschakelaar binnen en moet op basis
+            daarvan beslissen of ze al dan niet moet branden. Schrijf
+            hiervoor een functie <code>light(x, y, z)</code> die,
+            gegeven de drie booleans <code>x</code>, <code>y</code> en <code>z</code>
+            die de toestand van de lichtschakelaars voorstellen, <code>true</code> teruggeeft
+            indien de lamp moet branden en <code>false</code> in het andere geval.
+          </p>
+          <p>
+            Zorg ervoor dat je de functie <code>light</code> zo implementeert
+            dat je de lamp altijd kan aan- of uitzetten door &eacute;&eacute;n
+            willekeurige lichtschakelaar te gebruiken. Bijvoorbeeld, beschouw
+            de na&iuml;eve implementatie <code>x || y || z</code>, dan zit je met een probleem.
+            Stel dat iemand de lamp heeft aangeschakeld door
+            schakelaar <code>x</code> te gebruiken: de toestand is dan
+            <code>x === true</code>, <code>y === false</code>, <code>z === false</code>.
+            Voor jou is schakelaar <code>z</code> de dichtstbijzijnde. Je kan dan onmogelijk door
+            enkel <code>z</code> te bedienen het licht weer uitschakelen.
+            De enige manier is om helemaal tot bij schakelaar <code>x</code> te stappen
+            en die weer op <code>false</code> te zetten.
+          </p>
+        </div>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="oneOfThree" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">oneOfThree(x, y, z)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>oneOfThree(x, y, z)</code> die,
+            gegeven drie booleans <code>x</code>, <code>y</code> en <code>z</code>,
+            <code>true</code> teruggeeft indien &eacute;&eacute;n
+            van de argumenten <code>true</code> is en de andere twee <code>false</code>.
+          </p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

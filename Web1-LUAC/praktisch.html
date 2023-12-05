@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Praktisch - Start-to-Fly</title>
+    <link rel="Stylesheet" href="css/reset.css"/>
+    <link rel="Stylesheet" href="css/style.css"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="img/luaclogo.gif">
+</head>
+                
+<body id="praktisch">
+<header>
+    <h1>LUAC - Start to Fly cursus</h1>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html" >Home</a></li>
+            <li><a href="wat.html">Wat?</a></li>
+            <li><a href="startToFly.html">Start-to-Fly</a></li>
+            <li><a href="inschrijven.html">Inschrijven</a></li>
+            <li><a href="praktisch.html" class="selected">Praktisch</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section>
+        <article>
+            <h2>Wanneer?</h2>
+            <ul>
+                <li><strong>Inschrijven:</strong> Op elk gewenst moment tussen 15 februari en 15 september.
+                </li>
+                <li>
+                    <strong>Initiatievluchten:</strong> In weekends, volledige dag op het vliegveld.
+                    Theorielessen: op dinsdag avonden van 20 tot 22 uur.
+                </li>
+            </ul>
+        </article>
+        <article>
+            <h2>Waar?</h2>
+            <ul id="lijstwaar">
+                <li><strong>De praktijkgerichte initiatie</strong> vindt plaats op ons thuisvliegveld in Genk-Zwartberg: Vliegplein 1, 3600 Genk.
+            </li>
+                <li><div id="map"></div>
+                <script>
+                  function initMap() {
+                    var ulurumop = {lat: 50.8694894, lng: 4.6910171};
+                    var ulurumap = {lat: 51.0145944, lng: 5.5202582};
+                    var mop = new google.maps.Map(document.getElementById('mop'), {
+                      zoom: 13,
+                      center: ulurumop
+                    });
+                      var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 13,
+                      center: ulurumap
+                    });
+                      
+                    var marker = new google.maps.Marker({
+                      position: ulurumap,
+                      map: map
+                    });
+                      var marker = new google.maps.Marker({
+                      position: ulurumop,
+                      map: mop
+                    });
+                  }
+                </script>
+                <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJZC-bptZQCvK56f_hDmAKyhOL6FIuBaI&callback=initMap">
+                </script>
+                </li>
+            <li>
+                <strong>De theoriesessies</strong> vinden plaats in Leuven: Universitair Sportcentrum, Tervuursevest 101, 3001 Heverlee.
+            </li>
+            <li><div id="mop"></div></li>
+            </ul>
+            
+        </article>
+    </section>
+    <article>
+        <h2>Andere praktische informatie</h2>
+        <ul>
+            <li>Je hebt nog geen zweefvliegvergunning en bent nog nooit lid geweest van de LUAC.</li>
+            <li>Je bent minstens 14 jaar oud, niet groter dan 1.90 m en weegt tussen de 55 en 90 kg.</li>
+            <li>Reserveren voor je vliegdag doe je online.</li>
+            <li>Afspraken voor carpooling zijn mogelijk indien je zelf geen vervoer hebt naar het vliegveld.</li>
+            <li>Niet vergeten: gemakkelijke kledij die eventueel vuil mag worden, zonnebril, picknick, ...</li>
+        </ul>
+    </article>
+</main>
+
+<footer>
+       <address>
+       <div>
+        <ul>
+            <li><strong>Contacteer ons:</strong></li>
+            <li><strong>email:</strong> start-to-fly@luac.be</li>
+            <li><strong>Tel.:</strong> 016/ 40 70 34</li>
+        </ul>
+        <ul>
+            <li><strong>Hoofdsite:</strong> <a href="http://www.luac.be">www.luac.be</a></li>
+            <li><strong>Adres:</strong> Herendreef 24 - 3001 Heverlee</li>
+        </ul>
+    <a id="fblink"  href="https://www.facebook.com/groups/129583727057700/"><img src="img/fb.png" alt="facebook link"></a>
+    </div>
+    </address>
+</footer>
+</body>
+</html>

@@ -1,0 +1,23 @@
+//
+// Do any local configuration here
+//
+
+zone "arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/db.arthur-joppart.sb.uclllabs.be";
+	allow-transfer{
+		193.191.176.254;
+		193.191.177.4;
+		193.191.177.176; # iemand die mijn slave is
+		193.191.177.254;
+	};
+};
+zone "sam-arnalsteen.sb.uclllabs.be"{
+	type slave;
+	masters {193.191.177.176; };
+};
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+

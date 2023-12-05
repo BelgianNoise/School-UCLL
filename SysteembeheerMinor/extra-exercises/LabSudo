@@ -1,0 +1,8 @@
+sudo apt-get install monitoring-plugins-basic
+sudo apt-get install net-tools
+sudo adduser check sudo
+sudo visudo
+
+
+lijn toevoegen:
+check   ALL=(ALL) NOPASSWD: /usr/lib/nagios/plugins/check_apt, /usr/sbin/arp

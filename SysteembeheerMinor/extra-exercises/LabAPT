@@ -1,0 +1,21 @@
+apt install unattended-upgrades
+
+/etc/apt/apt.conf.d/50unattended-upgrades :
+uncomment : "${distro_id}:${distro_codename}-updates";
+uncomment : Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
+Unattended-Upgrade::Remove-Unused-Dependencies "true";
+Unattended-Upgrade::Automatic-Reboot "true";
+En verander die 3 lijnen naar "true"
+uncomment : Unattended-Upgrade::Automatic-Reboot-Time "02:00";
+En kies hier een uur da ge hem wilt laten restarten als dat moet voor ne upgrade.
+
+/etc/apt/apt.conf.d/20auto-upgrades :
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Download-Upgradeable-Packages "1";
+APT::Periodic::AutocleanInterval "7";
+APT::Periodic::Unattended-Upgrade "1";
+
+Die nummerkers zijn het aantal dagen tussen elke check
+
+checken of het werkt:
+sudo unattended-upgrades --dry-run --debug

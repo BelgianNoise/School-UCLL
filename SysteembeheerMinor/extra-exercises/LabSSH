@@ -1,0 +1,27 @@
+ssh/sshd_config:
+port 22345
+useDNS no
+AllowUsers root check
+
+/home/check/.ssh/authorized_keys :
+rsa key toevoegen
+
+/home/check :
+chmod 700 .ssh
+chown -R check:check .ssh
+
+useradd -m check
+
+apt install sshguard
+iptables -N sshguard
+iptables -A INPUT -j sshguard
+
+/etc/default/sshguard :
+ARGS="-a 50 -p 300 -s 120"
+LOGFILES="/var/log/auth.log"
+
+/etc/sshguard/whitelist :
+Alle ips
+
+service sshguard restart
+

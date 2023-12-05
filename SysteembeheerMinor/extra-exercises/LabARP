@@ -1,0 +1,25 @@
+arp -an -> geeft mac address van default gateway
+
+arp -s ipDefaultGateway MacAddressDefaultGateway
+
+/etc/ethers:
+ipDefaultGateway MacAddressDefaultGateway
+
+arp -f
+
+/lib/systemd/system/aprOnStartup.service:
+[Unit]
+After=network.target
+[Service]
+ExecStart=/usr/sbin/arp -f /etc/ethers
+[Install]
+WantedBy=default.target  
+
+chmod +x arpOnStartup.service
+
+systemctl start arpOnStartup
+systemctl enable arpOnStartup
+
+reboot
+
+check of het gewerkt heeft na boot door: arp -a 

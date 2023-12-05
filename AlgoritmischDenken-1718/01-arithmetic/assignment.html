@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Arithmetic</title>
+
+    <script src="bundle.js"></script>
+    <script src="student.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+
+    <style>
+      .operators {
+        margin: 1em auto;
+        text-align: center;
+        border-collapse: collapse;
+        border-spacing: 1em;
+      }
+
+      .operators tr {
+        height: 2em;
+      }
+
+      .operators th {
+        border-bottom: 1px solid black;
+        padding-right: 0.5em;
+      }
+
+      .operators td {
+        padding: 0em 1em;
+      }
+
+      .operators td:nth-child(1) {
+        text-align: left;
+        font-weight: bold;
+      }
+
+      .operators td:nth-child(3) {
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Arithmetic</h1>
+      <div id="commands"></div>
+      <span class="exercise-total-score"></span>
+    </header>
+    <aside>
+      <div id="exercise-overview"></div>
+      <div id="exercise-overview-collapser"><span>&#9658;</span></div>
+    </aside>
+    <div id="contents">
+      <section class="interpretation exercise" data-exercise-name="zero">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Hieronder staat Javascriptcode waarin een functie <code>foo</code> gedefinieerd wordt.
+            Welke waarde krijg je als je deze functie oproept?
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="five" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">five()</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Voor deze oefening moet je zelf code schrijven. In dezelfde directory als waar deze html-pagina bewaard staat
+            is er tevens een bestand genaamd <code>student.js</code>. Open dit bestand en je zal zien dat dit leeg is.
+            Je zal dit bestand moeten aanvullen met je oplossingen op codeervragen.
+          </p>
+          <p>
+            Schrijf een functie <code>five()</code> die altijd de waarde <code>5</code> teruggeeft.
+          </p>
+          <p>
+            Onderstaande tests kunnen drie kleuren aannemen:
+          </p>
+          <ul>
+            <li>
+              Groen: je code kan dit specifiek geval correct afhandelen.
+            </li>
+            <li>
+              Rood: je code is syntactisch correct (= er staan geen "spelfouten" of "grammaticale
+              fouten" in), maar bevat logische fouten (= voert de verkeerde stappen uit.
+            </li>
+            <li>
+              Grijs: er bestaat geen functie met de verwachte naam in <code>student.js</code>,
+              of je code bevat een syntaxfout. Je kan je browser vragen om foutmeldingen.
+              In Chrome kan dit via CTRL+SHIFT+J.
+            </li>
+          </ul>
+
+          <p>
+            Je hebt de oefening correct opgelost indien alle tests groen kleuren.
+          </p>
+        </div>
+      </section>
+      
+      <section class="interpretation exercise" data-exercise-name="identity">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Hieronder staat Javascriptcode waarin een functie <code>foo</code> gedefinieerd wordt.
+            Deze functie heeft een parameter <code>x</code>. Men kan dus bij het oproepen
+            van een functie een waarde meegeven, die dan door de functie gebruikt
+            kan worden om het resultaat uit te rekenen.
+          </p>
+          <p>
+            Vul onderstaande tabel in. De eerste kolom (<code>x</code>) bevat de waarde die meegegeven
+            wordt aan de functie. Vul in de tweede kolom in wat de functie teruggeeft.
+          </p>
+        </div>
+      </section>
+
+      <section class="explanation">
+        <header>
+          <h1>Operatoren in Javascript</h1>
+        </header>
+        <p>
+          Javascript kent de belangrijkste wiskundige operaties. Deze hebben de volgende syntax:
+        </p>
+        <table class="operators">
+          <tr>
+            <th></th>
+            <th>Wiskundige vorm</th>
+            <th>Javascript syntax</th>
+          </tr>
+          <tr>
+            <td>
+              Optelling
+            </td>
+            <td>
+              $x + y$
+            </td>
+            <td>
+              x + y
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Aftrekking
+            </td>
+            <td>
+              $x - y$
+            </td>
+            <td>
+              x - y
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Vermenigvuldiging
+            </td>
+            <td>
+              $x \times y$
+            </td>
+            <td>
+              x * y
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Deling
+            </td>
+            <td>
+              \[ \frac{x}{y} \]
+            </td>
+            <td>
+              x / y
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Rest
+            </td>
+            <td>
+              \[ x \mod y \]
+            </td>
+            <td>
+              x % y
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Machtsverheffing
+            </td>
+            <td>
+              \[ x^y \]
+            </td>
+            <td>
+              x ** y
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Vierkantswortel
+            </td>
+            <td>
+              \[ \sqrt{x} \]
+            </td>
+            <td>
+              Math.sqrt(x)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Naar beneden afronden
+            </td>
+            <td>
+              \[ \lfloor x \rfloor \]
+            </td>
+            <td>
+              Math.floor(x)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Naar boven afronden
+            </td>
+            <td>
+              \[ \lceil x \rceil \]
+            </td>
+            <td>
+              Math.ceil(x)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Minimum
+            </td>
+            <td>
+              \[ \min(x_1, x_2, x_3, \dots) \]
+            </td>
+            <td>
+              Math.min(x1, x2, x3, &hellip;)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Maximum
+            </td>
+            <td>
+              \[ \max(x_1, x_2, x_3, \dots) \]
+            </td>
+            <td>
+              Math.max(x1, x2, x3, &hellip;)
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="double">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="rest">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="square" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">square(x)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>square(x)</code> die gegeven een getal <code>x</code>
+            het kwadraat ervan uitrekent. Laat je hiervoor leiden door bovenstaande oefeningen.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="average" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">average(x, y)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>average(x, y)</code> die gegeven twee getallen <code>x</code>
+            en <code>y</code> het gemiddelde uitrekent. De formule is
+            \[ \frac{x + y}{2} \]
+          </p>
+        </div>
+      </section>
+
+      <section class="explanation">
+        <header>
+          <h1>Lokale Variabelen</h1>
+        </header>
+        <p>
+          Als je grote berekeningen moet uitvoeren, kan de overeenkomstige Javascriptcode
+          nogal onoverzichtelijk worden. Het is daarom nuttig om gebruik te maken van
+          <strong>lokale variabelen</strong>.
+        </p>
+        <p>
+          Beschouw de volgende oefening: je moet een bepaald bedrag <code>due</code>
+          betalen, maar je betaalt een hoger bedrag <code>paid</code>.
+          Schrijf een functie die uitrekent hoeveel munten je minimaal terugkrijgt,
+          als je over een onbeperkt aantal munten beschikt van
+          <a href="https://static.euronews.com/articles/330048/684x384_330048.jpg">&euro;5</a>,
+          &euro;2 en &euro;1. Dit leidt tot de volgende code:
+        </p>
+        <text-area class="raw-source" data-source-function="changeExample"></text-area>
+        <p>
+          Dit is zeer complexe code. Zou er een fout in steken,
+          zou je veel moeite hebben om deze eruit te halen. Zulke onleesbare code
+          is dan ook zeer afgeraden. Code moet in principe altijd zo vanzelfsprekend mogelijk zijn.
+        </p>
+        <p>
+          Met behulp van lokale variabelen kan men de code wat leesbaarder maken:
+        </p>
+        <text-area class="raw-source" data-source-function="betterChangeExample"></text-area>
+        <ul>
+          <li>
+            Eerst berekenen we hoeveel wisselgeld er moet teruggegeven worden. Dit slaan
+            we op in de lokale variabele <code>toBePaidBack</code>.
+          </li>
+          <li>
+            Vervolgens rekenen we uit hoeveel &euro;5-munten in dit bedrag passen.
+            Dit aantal bewaren we in <code>coinsOf5Needed</code>.
+          </li>
+          <li>
+            We updaten <code>toBePaidBack</code>: we hebben <code>coinsOf5Needed</code> &euro;5
+            munten reeds al wisselgeld, we moeten dus 5 &times; <code>coinsOf5Needed</code> minder
+            terugbetalen.
+          </li>
+          <li>
+            We herhalen dezelfde stappen voor &euro;2- en &euro;1-munten,
+          </li>
+          <li>
+            We tellen het totaal aantal munten wisselgeld en bewaren het in <code>totalCoinsNeeded</code>.
+            Dit geven we ook terug als eindresultaat van de berekening.
+          </li>
+        </ul>
+        <p>
+          Door descriptieve namen te geven aan de lokale variabelen kan je beter begrijpen
+          wat de berekeningen voorstellen. Het debuggen wordt ook veel eenvoudiger:
+          je kan stap voor stap zien welke waarden toegekend worden aan elke lokale variabele.
+        </p>
+        <p>
+          Een vaak voorkomend patroon bij het wijzigen van een variabele is
+          <code>x = x + y</code>, <code>x = x - y</code>, <code>x = x * y</code>, etc.
+          M.a.w. de nieuwe waarde van de variabele hangt af van de oude waarde waarop
+          een operator wordt toegepast. Hiervoor zijn verkorte notaties beschikbaar:
+        </p>
+        <table class="operators">
+          <tr>
+            <th>Lange notatie</th>
+            <th>Verkorte notatie</th>
+          </tr>
+          <tr>
+            <td>
+              <code>x = x + y</code>
+            </td>
+            <td>
+              <code>x += y</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>x = x + 1</code>
+            </td>
+            <td>
+              <code>x++</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>x = x - y</code>
+            </td>
+            <td>
+              <code>x -= y</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>x = x - 1</code>
+            </td>
+            <td>
+              <code>x--</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>x = x * y</code>
+            </td>
+            <td>
+              <code>x *= y</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>x = x / y</code>
+            </td>
+            <td>
+              <code>x /= y</code>
+            </td>
+          </tr>
+        </table>
+        <p>
+          Deze notatie is bruikbaar voor de meeste operatoren; we verwijzen je naar
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators">een volledig overzicht</a> voor meer informatie.
+        </p>
+      </section>
+
+      <section class="interpretation exercise" data-exercise-name="distance">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="cakes" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">cakes(eggs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je hebt aantal eieren ter beschikking. Een cake bakken
+            vergt 4 eieren. Schrijf een functie <code>cakes(eggs)</code> die uitrekent,
+            gegeven een aantal eieren <code>eggs</code>, hoeveel cakes je ermee kunt bakken.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="cakes2" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">cakes2(eggs, flour)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je hebt een beperkte hoeveelheid eieren en bloem ter beschikking.
+            Per cake heb je 4 eieren en 250g bloem nodig. Schrijf
+            een functie <code>cakes2(eggs, flour)</code> die uitrekent hoeveel cakes je
+            kunt bakken.
+          </p>
+        </div>
+      </section>
+
+      <section class="explanation">
+        <header>
+          <h1><code>var</code> vs <code>let</code> vs <code>const</code></h1>
+        </header>
+        <p>
+          Er zijn meerdere manieren om een lokale variabele te introduceren.
+          Hierboven gebruikten we telkens <code>let</code>, wat in feite nooit verkeerd is.
+          Je bent dus vrij altijd <code>let</code> te gebruiken.
+        </p>
+        <text-area class="raw-source" data-source-function="varLetConstExample"></text-area>
+        <p>
+          <code>var</code> is een verouderde manier om lokale variabelen in te voeren
+          en kan in sommige omstandigheden tot heel verwarrende resultaten leiden.
+          Het is aangeraden om in
+          <a href="http://es6-features.org/#BlockScopedVariables">nieuwere versies van JavaScript</a>
+          <code>let</code> te gebruiken i.p.v. <code>var</code>.
+        </p>
+        <p>
+          <code>const</code> kan gebruikt worden indien je duidelijk wil maken dat een
+          variabele zijn initi&euml;le waarde zal behouden, m.a.w. zal later
+          niet gewijzigd worden.
+        </p>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="cakes3" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">cakes3(eggs, flour, sugar)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je hebt een beperkte hoeveelheid eieren, bloem en suiker ter beschikking.
+            Per cake heb je 4 eieren, 250g bloem en 250g suiker nodig. Schrijf
+            een functie <code>cakes2(eggs, flour, sugar)</code> die uitrekent hoeveel cakes je
+            kunt bakken.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="cakes4" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">cakes4(eggsReq, eggsAv, flourReq, flourAv, sugarReq, sugarAv)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je hebt een beperkte hoeveelheid eieren, bloem en suiker ter beschikking,
+            voorgesteld door de variabelen <code>eggsAv</code>, <code>flourAv</code> en
+            <code>sugarAv</code>, respectievelijk. Per cake heb je
+            een aantal van deze ingredi&euml;nten nodig, voorgesteld
+            door <code>eggsReq</code>, <code>flourReq</code> en <code>suguarReq</code>.
+            Schrijf een functie <code>cakes4(eggsReq, eggsAv, flourReq, flourAv, sugarReq, sugarAv)</code>
+            die uitrekent hoeveel cakes je kunt bakken.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="busesNeeded" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">busesNeeded(people, busCapacity)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Een groot aantal mensen zoeken transport naar hun favoriete festilval.
+            Schrijf een functie <code>busesNeeded(people, busCapacity)</code>
+            die gegeven een aantal mensen <code>people</code> en een
+            buscapaciteit <code>busCapacity</code> uitrekent
+            hoeveel bussen er nodig zijn.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="advanceHour" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">advanceHour(h, n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Een 24-urenklok geeft aan dat het nu <code>h</code> uur is (we negeren de minuten.)
+            De klok heeft een knop waarmee je de tijd kunt aanpassen:
+            elke duw op de knop verhoogt het uur met 1.
+            Schrijf een functie <code>advanceHour(h, n)</code> die aangeeft
+            welk uur de klok zal aangeven nadat je <code>n</code> keer geduwd hebt op de knop.
+            Bijvoorbeeld, als de klok <code>15</code> aangeeft en je drukt 3 maal,
+            is het resultaat <code>advanceHour(15, 3)</code> = <code>18</code>.
+          </p>
+          <p>
+            De moeilijkheid ligt bij wat er moet gebeuren als je voorbij 23 uur gaat.
+            Als <code>h = 23</code> en <code>n = 4</code>, dan moet het resultaat
+            <code>3</code> zijn.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="distribute" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">distribute(children, candy)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je hebt een aantal snoepjes dat je moet verdelen onder een aantal kinderen.
+            Elk kind moet evenveel snoepjes krijgen, en tevens zoveel mogelijk.
+            Schrijf een functie <code>distribute(children, candy)</code> die
+            uitrekent hoeveel snoepjes je overhoudt.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="lastDigit" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">lastDigit(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>lastDigit(n)</code> die het laatste cijfer (van de decimale notatie)
+            van een gegeven positief geheel getal <code>n</code> teruggeeft.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="abs" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">abs(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>abs(n)</code> die de absolute waarde teruggeeft van
+            het gegeven getal <code>n</code>.
+          </p>
+          <p>
+            Het is uiteraard de bedoeling dat je deze functie geschreven krijgt enkel
+            gebruik makend van de operatoren vermeld in de bovenstaande tabel.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="sign" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">sign(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>sign(n)</code> die <code>1</code> teruggeeft
+            indien $n &gt; 0$ en <code>-1</code> indien $n &lt; 0$. Het geval $n = 0$ mag je negeren.
+          </p>
+          <p>
+            Nota aan de meer gevorderde studenten: het is de bedoeling deze oefening
+            op te lossen enkel gebruik makend van de totnogtoe besproken leerstof (dus geen <code>if</code>s
+            gebruiken.)
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="minutesSinceMidnight" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">minutesSinceMidnight(h, m)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>minutesSinceMidnight(h, m)</code> die,
+            gegeven twee gehele getallen <code>h</code> en <code>m</code> die respectievelijk
+            uur en minuten van een tijdstip voorstellen, uitrekent hoeveel minuten
+            er tussen middernacht en dat tijdstip zitten.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="minutesBetween" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">minutesBetween(h1, m1, h2, m2)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>minutesBetween(h1, m1, h2, m2)</code> die, gegeven
+            vier gehele getallen <code>h1</code>, <code>m1</code>, <code>h2</code> en <code>m2</code>,
+            die beginuur (<code>h1:m1</code> en einduur (<code>h2:m2</code>) voorstellen,
+            uitrekent hoeveel minuten er tussen beide tijdstippen is.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="round" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">round(n, precision)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>round(n, precision)</code> die, gegeven een getal
+            <code>n</code> en een positief geheel getal <code>precision</code>,
+            het getal <code>n</code> afrondt tot <code>precision</code> cijfers na de komma.
+          </p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

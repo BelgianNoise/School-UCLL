@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Recursie</title>
+    <script src="bundle.js"></script>
+    <script src="student.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+    
+    <style>
+      .dice {
+        font-size: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Recursie</h1>
+      <div id="commands"></div>
+      <span class="exercise-total-score"></span>
+    </header>
+    <aside>
+      <div id="exercise-overview"></div>
+      <div id="exercise-overview-collapser"><span>&#9658;</span></div>
+    </aside>
+    <div id="contents">
+      <section class="interpretation exercise" data-exercise-name="abs">
+        <header>
+          <h1 class="exercise-header">Wat doet deze code?</h1>
+        </header>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="product" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">product(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een recursieve functie <code>product(n)</code> die het product van 1 tot en met <code>n</code>
+            uitrekent. Ga ervan uit dat <code>n</code> positief is.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="sum" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">sum(a, b)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een recursieve functie <code>sum(a, b)</code> die de som van <code>a</code> tot en met <code>b</code>
+            uitrekent.
+          </p>
+        </div>
+      </section>
+  
+      <section class="coding exercise" data-exercise-name="euclid" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">euclid(a, b)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een functie <code>euclid(a, b)</code> die gegeven twee gehele getallen
+            <code>a</code> en <code>b</code> uitrekent wat hun grootste gemene deler is.
+            Gebruik hiervan het algoritme van Euclides:
+            \[
+              \mathrm{ggd}(a, b) = \left\{
+                                     \begin{array}{lr}
+                                       a &amp; b = 0 \\
+                                       \mathrm{ggd}(b, a \;\mathrm{mod}\; b) &amp; b \neq 0 \\
+                                     \end{array}
+                                   \right.
+            \]
+          </p>
+        </div>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="range" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">range(a, b)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een recursieve functie <code>range(a, b)</code> die gegeven
+            twee getallen <code>a</code> en <code>b</code> de array
+            <code>[a, a+1, a+2, &hellip;, b]</code> opbouwt.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="double" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">double(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een recursieve functie <code>double(xs)</code> die gegeven
+            een array getallen <code>xs</code> een nieuwe array teruggeeft
+            waarvan de elementen gelijk zijn aan het dubbel van hun overeenkomstige
+            element in <code>xs</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="contains" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">contains(xs, x)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een recursieve functie <code>contains(xs, x)</code> die, gegeven
+            een array <code>xs</code> en een waarde <code>x</code>, nagaat
+            of <code>x</code> voorkomt in <code>xs</code>.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="indexOf" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">indexOf(xs, x)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een recursieve functie <code>indexOf(xs, x)</code> die, gegeven
+            een array <code>xs</code> en een waarde <code>x</code>, de kleinste index
+            van <code>x</code> in <code>xs</code> teruggeeft. Indien <code>x</code>
+            niet voorkomt in <code>x</code>, moet de functie <code>-1</code> teruggeven.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="isPalindrome" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">isPalindrome(str)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een recursieve functie <code>isPalindrome(str)</code> die, gegeven
+            een string <code>str</code>, nagaat of het een palindroom is.
+            Een string is een palindroom indien men als men de letters omkeert, men dezelfdstring uitkomt.
+            Voorbeelden zijn non, lepel, negen, etc.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="digits" data-exercise-difficulty="1">
+        <header>
+          <h1 class="exercise-header">digits(n)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een recursieve functie <code>digits(n)</code> die, gegeven een positief geheel getal <code>n</code>,
+            de cijfers van <code>n</code> teruggeeft als een lijst getallen.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="remove" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">remove(xs, x)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een recursieve functie <code>remove(xs, x)</code> die, gegeven
+            een array <code>xs</code> en een waarde <code>x</code>, een nieuwe
+            array teruggeeft die gelijk is aan <code>xs</code> waaruit alle
+            voorkomens van <code>x</code> werden verwijderd.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="removeDuplicates" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">removeDuplicates(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een recursieve functie <code>removeDuplicates(xs)</code> die, gegeven
+            een array <code>xs</code>, een nieuwe array teruggeeft gelijk aan <code>xs</code>
+            waaruit alle duplicaten werden gehaald. Indien een element meermaals voorkomt,
+            mag enkel het meest linkse element voorkomen in de resulterende array.
+          </p>
+        </div>
+      </section>
+      
+      <section class="coding exercise" data-exercise-name="reverse" data-exercise-difficulty="2">
+        <header>
+          <h1 class="exercise-header">reverse(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Schrijf een recursieve functie <code>reverse(xs)</code> die de gegeven
+            array <code>xs</code> omkeert. De functie moet de gegeven array zelf niet wijzigen,
+            maar een nieuwe array teruggeven die de ge&iuml;nverteerde vorm van <code>xs</code> is.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="money" data-exercise-difficulty="3">
+        <header>
+          <h1 class="exercise-header">money(xs)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je beschikt over een aantal munten en briefjes. Je wil weten of je
+            een gegeven bedrag gepast kunt vormen. Schrijf een functie <code>money(coins, goal)</code>
+            die, gegeven een array getallen <code>coins</code> die de muntstukken/briefjes
+            voorstellen en een getal <code>goal</code> dat het doelbedrag voorstelt,
+            <code>true</code> teruggeeft indien je het bedrag exact kunt vormen,
+            en <code>false</code> indien niet.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="reachable" data-exercise-difficulty="3">
+        <header>
+          <h1 class="exercise-header">reachable(map, from, to)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            Je krijgt een landkaart. Elke stad stellen we voor door een index, d.i. steden 0, 1, 2, 3, &hellip;
+            Steden kunnen verbonden zijn met elkaar via wegen, maar uiteraard is niet elke
+            stad verbonden met elke andere stad.
+          </p>
+          <p>
+            We stellen de landkaart voor als volgt: per stad sommen
+            we de rechtstreeks bereikbare steden op. Stel dat steden
+            4, 7 en 8 bereikbaar zijn, dan schrijven we dit als de array
+            <code>[4,7,8]</code>. Dit herhalen we voor elke stad:
+            we krijgen dus een array van lijsten bereikbare steden.
+          </p>
+          <p>
+            Bijvoorbeeld: beschouw een landkaart met 3 steden op, genummerd 0, 1 en 2.
+            Vanuit stad 0 vertrekt een &eacute;&eacute;nrichtingsweg naar 1,
+            vanuit 1 is er een &eacute;&eacute;nrichtingsweg naar 2. Dit schrijven we als
+            <code>[[1], [2], []]</code>. Op index 0 staat <code>[1]</code>, wat betekent
+            dat men vanuit stad 0 stad 1 rechtstreeks kan bereiken. Op index 2 staat <code>[]</code>,
+            wat aangeeft dat men onmogelijk stad 2 kan verlaten.
+          </p>
+          <p>
+            Schrijf een functie <code>reachable(map, from, to)</code>
+            die gegeven een landkaart <code>map</code>, een vertrekpunt <code>from</code>
+            en een eindpunt <code>to</code>, nagaat of men vanuit het vertrekpunt het eindpunt kan bereiken.
+          </p>
+        </div>
+      </section>
+
+      <section class="coding exercise" data-exercise-name="countdown" data-exercise-difficulty="3">
+        <header>
+          <h1 class="exercise-header">countdown(ns, goal)</h1>
+        </header>
+        <div class="exercise-description">
+          <p>
+            In het Britse spelprogramma Countdown (dat in Vlaanderen gekend is onder de naam "Cijfers en Letters") krijgen kandidaten
+            6 positieve gehele getallen en een doelgetal. De bedoeling is dat ze met deze 6 gegeven getallen via
+            berekeningen (optelling, aftrekking, vermenigvuldiging en deling) het doelgetal kunnen uitkomen.
+          </p>
+          <p>
+            Bijvoorbeeld, stel dat je de getallen 8, 4, 4, 6, 8 en 9 krijgt, en het doelgetal is 594.
+            De volgende berekening toont aan hoe je dit doelgetal kan bereiken:
+          </p>
+          <ul>
+            <li>
+              8 + 8 = 16
+            </li>
+            <li>
+              16 * 4 = 64
+            </li>
+            <li>
+              6 - 4 = 2
+            </li>
+            <li>
+              64 + 2 = 66
+            </li>
+            <li>
+              66 * 9 = 594
+            </li>
+          </ul>
+          <p>
+            Tijdens een berekening mogen enkel positieve gehele getallen voorkomen: negatieve of kommagetallen zijn dus geen geldige tussenresultaten.
+          </p>
+          <p>
+            Schrijf een functie <code>countdown(ns, goal)</code> die gegeven een array positieve gehele getallen en een doelgetal <code>goal</code>
+            nagaat of het mogelijk is om het doelgetal te bekomen.
+          </p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

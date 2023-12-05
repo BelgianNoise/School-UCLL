@@ -1,0 +1,184 @@
+﻿<Window x:Class="View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View"
+        xmlns:controls="clr-namespace:View.Controls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525"
+        WindowState="Maximized"
+        WindowStyle="None">
+    <Window.Resources>
+        <local:SquareConverter x:Key="converter"/>
+    </Window.Resources>
+    <ContentPresenter Content="{Binding CurrentScreen}">
+        <ContentPresenter.Resources>
+            <DataTemplate DataType="{x:Type local:StartScreen}">
+                <StackPanel Background="#111">
+                    <StackPanel>
+                        <Button FontSize="3cm" Command="{Binding Start}"
+                                Background="black" Foreground="yellow">Start</Button>
+                    </StackPanel>
+                <StackPanel DataContext="{Binding VM}" Background="#111" VerticalAlignment="Stretch">
+                    <ListBox ItemsSource="{Binding Puzzles}" SelectedItem="{Binding SelectedPuzzle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                             HorizontalAlignment="center" Background="#333"
+                             FontSize="1cm" Width="600">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="yellow" Text="{Binding Puzzle.Size, Mode=OneWay}"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+                </StackPanel>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:GameScreen}">
+                <StackPanel Background="#111">
+                <StackPanel VerticalAlignment="Stretch" 
+        Height="Auto" DataContext="{Binding VM}" 
+                            HorizontalAlignment="Stretch">
+                    <StackPanel.Background>
+                        <Binding Path="Check.Value">
+                            <Binding.Converter>
+                                    <local:SolvedConverter t="#84FF4C" f="#333"/>
+                            </Binding.Converter>
+                        </Binding>
+                    </StackPanel.Background>
+                    <Grid HorizontalAlignment="Center">
+                        <controls:PiCrossControl x:Name="picrossControl" Grid="{Binding Grid}" RowConstraints="{Binding RowConstraints}" ColumnConstraints="{Binding ColumnConstraints}">
+                            <controls:PiCrossControl.SquareTemplate>
+                                <DataTemplate>
+                                    <Rectangle Width="35" Height="35" Stroke="Black">
+                                        <Rectangle.Fill>
+                                            <Binding Path="Contents.Value">
+                                                <Binding.Converter>
+                                                        <local:SquareConverter Empty="Yellow" Filled="Black" Unknown="#999595"/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </Rectangle.Fill>
+                                        <Rectangle.InputBindings>
+                                            <MouseBinding Gesture="LeftClick" Command="{Binding Press}"/>
+                                            <MouseBinding Gesture="RightClick" Command="{Binding PressRight}"/>
+                                        </Rectangle.InputBindings>
+                                    </Rectangle>
+                                </DataTemplate>
+                            </controls:PiCrossControl.SquareTemplate>
+                            <!--Constraints-->
+                            <controls:PiCrossControl.RowConstraintsTemplate>
+                                <DataTemplate>
+                                    <ItemsControl ItemsSource="{Binding Values}" Padding="0 0 5px 0">
+                                            <ItemsControl.Background>
+                                                <Binding Path="Satisfied.Value">
+                                                    <Binding.Converter>
+                                                        <local:SolvedConverter>
+                                                            <local:SolvedConverter.t>
+                                                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                    <GradientStop Offset="0" Color="LightGreen"/>
+                                                                    <GradientStop Offset="0.5" Color="Green"/>
+                                                                    <GradientStop Offset="1" Color="DarkGreen"/>
+                                                                </LinearGradientBrush>
+                                                            </local:SolvedConverter.t>
+                                                            <local:SolvedConverter.f>
+                                                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                    <GradientStop Offset="0" Color="Orange"/>
+                                                                    <GradientStop Offset="0.5" Color="Red"/>
+                                                                    <GradientStop Offset="1" Color="DarkRed"/>
+                                                                </LinearGradientBrush>
+                                                            </local:SolvedConverter.f>
+                                                        </local:SolvedConverter>
+                                                    </Binding.Converter>
+                                                </Binding>
+                                            </ItemsControl.Background>
+                                            <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Foreground="black" TextAlignment="Center" Width="35" Height="35" Text="{Binding Value}" FontSize="0.8cm">
+                                                    <TextBlock.Background>
+                                                        <Binding Path="IsSatisfied.Value">
+                                                            <Binding.Converter>
+                                                                <local:SolvedConverter f="#EB7758" t="#96FF5C"/>
+                                                            </Binding.Converter>
+                                                        </Binding>
+                                                    </TextBlock.Background>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </DataTemplate>
+                            </controls:PiCrossControl.RowConstraintsTemplate>
+                            <controls:PiCrossControl.ColumnConstraintsTemplate>
+                                <DataTemplate>
+                                    <ItemsControl ItemsSource="{Binding Values}" Padding="0 0 0 5px">
+                                            <ItemsControl.Background>
+                                                <Binding Path="Satisfied.Value">
+                                                    <Binding.Converter>
+                                                        <local:SolvedConverter>
+                                                            <local:SolvedConverter.t>
+                                                                <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
+                                                                    <GradientStop Offset="0" Color="LightGreen"/>
+                                                                    <GradientStop Offset="0.5" Color="Green"/>
+                                                                    <GradientStop Offset="1" Color="DarkGreen"/>
+                                                                </LinearGradientBrush>
+                                                            </local:SolvedConverter.t>
+                                                            <local:SolvedConverter.f>
+                                                                <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
+                                                                    <GradientStop Offset="0" Color="Orange"/>
+                                                                    <GradientStop Offset="0.5" Color="Red"/>
+                                                                    <GradientStop Offset="1" Color="DarkRed"/>
+                                                                </LinearGradientBrush>
+                                                            </local:SolvedConverter.f>
+                                                        </local:SolvedConverter>
+                                                    </Binding.Converter>
+                                                </Binding>
+                                            </ItemsControl.Background>
+                                            <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Vertical"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock TextAlignment="Center" Width="35" Height="35" Text="{Binding Value}" FontSize="0.8cm">
+                                                    <TextBlock.Background>
+                                                        <Binding Path="IsSatisfied.Value">
+                                                            <Binding.Converter>
+                                                                <local:SolvedConverter f="#EB7758" t="#96FF5C"/>
+                                                            </Binding.Converter>
+                                                        </Binding>
+                                                    </TextBlock.Background>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </DataTemplate>
+                            </controls:PiCrossControl.ColumnConstraintsTemplate>
+                        </controls:PiCrossControl>
+                    </Grid>
+                        <TextBlock Text="{Binding Time, Mode=OneWay}" HorizontalAlignment="center"
+                                   FontSize="0.8cm" Background="white" Padding="5px"/>
+                        <Button Command="{Binding StartTimer}" Margin="200 0 200 0" FontSize="0.8cm" 
+                                Foreground="white" Background="darkblue">Start Timer</Button>
+                        <Button Command="{Binding StopTimer}" Margin="200 0 200 0" FontSize="0.8cm" 
+                                Foreground="white" Background="darkblue">Stop Timer</Button>
+                </StackPanel>
+                    <StackPanel VerticalAlignment="Stretch" Background="#333">
+                        <Button Margin="200 0 200 0" FontSize="0.8cm" 
+                                Foreground="white" Background="darkblue" Command="{Binding Rerun}">Ga terug naar select-scherm</Button>
+                        <Button Margin="200 0 200 0"
+                                Foreground="white" Background="darkblue" FontSize="0.8cm" Command="{Binding Reset}">Reset de puzzel</Button>
+                        <Button Margin="200 0 200 10px" FontSize="0.8cm" 
+                                Foreground="white" Background="darkblue" 
+                                Click="SkipSong">
+                            Volgend liedje >>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </DataTemplate>
+        </ContentPresenter.Resources>
+    </ContentPresenter>
+</Window>

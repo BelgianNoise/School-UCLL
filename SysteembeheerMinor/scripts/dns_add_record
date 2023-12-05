@@ -1,0 +1,94 @@
+#! /bin/bash
+
+while getopts "t:" opt; do
+	case $opt in
+		t) TEST=$OPTARG      ;;
+		*) echo 'error' >&2
+			exit 1
+	esac
+done
+# alles voor -t A of geen -t
+# Gewoon een record toevoegen dus
+if [ "$TEST" == "A" ] ||  [ -z "$TEST" ]; then
+	if [ "$TEST" == "A" ]; then
+		SUB=$3
+		IP=$4
+		ZONE=$5
+	fi
+	if [ -z "$TEST" ]; then
+		SUB=$1
+		IP=$2
+		ZONE=$3
+	fi
+	if [ -z "$SUB" ] || [ -z "$IP" ] || [ -z "$ZONE" ]; then
+		printf "geef subdomein mee als eerste argument, ip als 2de en zone als derde, danku"
+	else
+		echo "t: $TEST | sub: $SUB | ip: $IP | zone: $ZONE"
+		# add dns record logic here
+		# Dees werkt al
+		# Bij mij maakt mijn dns_add_zone een file aan zonder db. ervoor
+		# Daarom da ik hieroner db. toevoegen bij de gewone file
+		if [ "$ZONE" == "arthur-joppart.sb.uclllabs.be" ]; then
+			ZONE="db.${ZONE}"
+		fi
+		echo -e "$SUB     IN      A       $IP" >> /etc/bind/zones/$ZONE
+		SERIAL_NUM=$(grep -Po '\d+(?=\s+; Serial)' /etc/bind/zones/$ZONE)
+		SERIAL_LIN=$(grep -Po '\s+; Serial' /etc/bind/zones/$ZONE)
+		SERIAL_ALL=$(grep -Po '\d+\s+; Serial' /etc/bind/zones/$ZONE)
+		NEW_NUM=$(("$SERIAL_NUM" + 1))
+		sed -i "s/$SERIAL_ALL/$NEW_NUM$SERIAL_LIN/g" /etc/bind/zones/$ZONE
+
+		systemctl restart bind9
+	fi
+fi
+
+# CNAME DINGES
+if [ "$TEST" == "CNAME" ]; then
+	ALIAS=$3
+	ALIASFOR=$4
+	if [ -z "$ALIAS" ] || [ -z "$ALIASFOR" ]; then
+		echo "geef aub 2 params mee dank"
+	else
+		echo "t: $TEST | alias: $ALIAS | aliasfor: $ALIASFOR"
+		# add dns record logic here
+		FRONT="${ALIASFOR%%.*}"
+		ZONE=${ALIASFOR#*.}
+		echo "$FRONT   $ZONE"
+		
+		if [ "$ZONE" == "arthur-joppart.sb.uclllabs.be" ]; then
+			ZONE="db.${ZONE}"
+		fi
+		
+		echo -e "$ALIAS     IN      CNAME       $FRONT" >> /etc/bind/zones/$ZONE
+		SERIAL_NUM=$(grep -Po '\d+(?=\s+; Serial)' /etc/bind/zones/$ZONE)
+		SERIAL_LIN=$(grep -Po '\s+; Serial' /etc/bind/zones/$ZONE)
+		SERIAL_ALL=$(grep -Po '\d+\s+; Serial' /etc/bind/zones/$ZONE)
+		NEW_NUM=$(("$SERIAL_NUM" + 1))
+		sed -i "s/$SERIAL_ALL/$NEW_NUM$SERIAL_LIN/g" /etc/bind/zones/$ZONE
+		systemctl restart bind9
+	fi
+fi
+
+# HIER DIE MX RECORDS
+if [ "$TEST" == "MX" ]; then
+	SUB=$3
+	IP=$4
+	ZONE=$5
+	if [ -z "$SUB" ] || [ -z "$IP" ] || [ -z "$ZONE" ]; then
+		echo "3 parameters aub dank meneer!"
+	else
+		echo "t: $TEST | sub: $SUB | ip: $IP | zone: $ZONE"
+		#add dns record logic here
+		if [ "$ZONE" == "arthur-joppart.sb.uclllabs.be" ]; then
+			ZONE="db.${ZONE}"
+		fi
+		echo -e "$SUB     IN      A       $IP" >> /etc/bind/zones/$ZONE
+		SERIAL_NUM=$(grep -Po '\d+(?=\s+; Serial)' /etc/bind/zones/$ZONE)
+		SERIAL_LIN=$(grep -Po '\s+; Serial' /etc/bind/zones/$ZONE)
+		SERIAL_ALL=$(grep -Po '\d+\s+; Serial' /etc/bind/zones/$ZONE)
+		NEW_NUM=$(("$SERIAL_NUM" + 1))
+		sed -i "s/$SERIAL_ALL/$NEW_NUM$SERIAL_LIN/g" /etc/bind/zones/$ZONE
+		systemctl restart bind9 
+	fi
+fi
+systemctl restart bind9

@@ -1,0 +1,1075 @@
+//
+// Do any local configuration here
+//
+
+zone "arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/db.arthur-joppart.sb.uclllabs.be";
+	allow-transfer{
+		193.191.176.254;
+		193.191.177.4;
+		193.191.177.176; # iemand die mijn slave is
+		193.191.177.254;
+	};
+};
+zone "sam-arnalsteen.sb.uclllabs.be."{
+	type slave;
+	masters {193.191.177.176; };
+};
+zone "indy-naessens.sb.uclllabs.be." {
+    type slave;
+    masters { 193.191.177.148; };
+};
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+
+zone "testerzone.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/testerzone.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "nognentest.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/nognentest.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "enkeletesten.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/enkeletesten.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonepe8soh.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonepe8soh.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneeng5iw.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneeng5iw.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonepook2o.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonepook2o.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneeegum4.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneeegum4.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "t.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/t.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneuo3hoh.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneuo3hoh.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneeec9oo.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneeec9oo.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonexoom4p.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonexoom4p.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonezo2wae.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonezo2wae.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonenei4oh.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonenei4oh.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonenaida1.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonenaida1.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneawai1i.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneawai1i.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonesahy5x.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonesahy5x.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneoong8i.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneoong8i.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonegimoo7.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonegimoo7.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneeov8ee.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneeov8ee.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneeezoo2.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneeezoo2.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonewi7hoh.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonewi7hoh.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonegaht1a.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonegaht1a.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonethe2ei.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonethe2ei.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneay2bah.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneay2bah.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneao4ro3.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneao4ro3.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneeengo3.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneeengo3.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonephaz1u.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonephaz1u.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonetesai6.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonetesai6.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneoeshi8.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneoeshi8.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneol3oom.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneol3oom.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonememie1.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonememie1.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonepaelo5.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonepaelo5.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonesa5aej.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonesa5aej.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneahb5ah.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneahb5ah.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonete9iif.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonete9iif.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonena3ieg.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonena3ieg.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonepu4bai.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonepu4bai.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonethee3a.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonethee3a.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneuo5luc.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneuo5luc.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonelai8au.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonelai8au.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneohh1ju.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneohh1ju.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneouvee1.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneouvee1.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonesi4xu7.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonesi4xu7.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonezai8ul.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonezai8ul.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneaik7da.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneaik7da.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonehoo8ei.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonehoo8ei.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneeiz4ve.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneeiz4ve.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneaiy7ai.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneaiy7ai.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzonevihih6.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzonevihih6.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "styn.arthur-joppart.sb.uclllabs.be.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/styn.arthur-joppart.sb.uclllabs.be.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "klonky.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/klonky.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "aaa.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/aaa.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "bbb.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/bbb.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "subzoneaet9es.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/subzoneaet9es.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "ccc.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/ccc.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "ddd.arthur-joppart.sb.uclllabs.be"{
+type master;
+file "/etc/bind/zones/ddd.arthur-joppart.sb.uclllabs.be";
+allow-transfer {
+193.191.176.254;
+193.191.177.4;
+193.191.177.176;
+193.191.177.254;
+193.191.177.138; };
+};
+
+zone "eee.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/eee.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneahc4up.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneahc4up.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneohb7oo.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneohb7oo.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonedo9koh.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonedo9koh.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonekoo9hu.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonekoo9hu.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneat7the.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneat7the.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonehe2iec.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonehe2iec.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonedeep5p.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonedeep5p.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneiek3er.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneiek3er.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneeo4mie.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneeo4mie.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneeil9oo.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneeil9oo.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneuv9air.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneuv9air.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneiev4ki.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneiev4ki.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneaipi5i.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneaipi5i.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonenah6ai.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonenah6ai.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneoj7ieg.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneoj7ieg.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonedi1gir.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonedi1gir.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneda9nom.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneda9nom.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneaup6so.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneaup6so.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonejie3co.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonejie3co.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonekaegh9.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonekaegh9.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonehohx0y.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonehohx0y.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonetee3lo.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonetee3lo.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonemahn4p.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonemahn4p.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonetah2fe.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonetah2fe.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneeib2eo.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneeib2eo.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonewiew5v.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonewiew5v.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneul6eku.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneul6eku.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonesu2aib.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonesu2aib.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonechah7k.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonechah7k.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneeiroh8.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneeiroh8.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneeezai5.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneeezai5.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonegimie9.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonegimie9.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneaex4za.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneaex4za.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonema8ohh.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonema8ohh.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneloich7.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneloich7.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneshoo6a.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneshoo6a.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneatoh9e.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneatoh9e.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneaa2ina.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneaa2ina.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneiek2ee.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneiek2ee.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonehoob9t.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonehoob9t.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonetei1oc.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonetei1oc.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonepaej4s.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonepaej4s.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneleig9u.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneleig9u.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonephi9wo.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonephi9wo.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonephah9s.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonephah9s.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneahn1gu.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneahn1gu.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonebe3jae.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonebe3jae.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneux6oer.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneux6oer.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneeihie5.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneeihie5.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneruth6a.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneruth6a.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneequee9.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneequee9.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneeifee0.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneeifee0.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneahj0me.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneahj0me.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonekuez6e.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonekuez6e.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonejueph7.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonejueph7.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonefo7aiv.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonefo7aiv.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneohch0g.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneohch0g.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonecaej1i.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonecaej1i.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonever0ah.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonever0ah.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneahf5oo.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneahf5oo.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneacai1e.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneacai1e.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneniu7vi.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneniu7vi.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneais2og.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneais2og.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonequo5au.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonequo5au.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonepa6noo.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonepa6noo.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneyoo9oj.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneyoo9oj.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneaew7mi.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneaew7mi.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneaa2aph.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneaa2aph.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzonewah3je.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzonewah3je.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "ttt.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/ttt.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};
+
+zone "subzoneaesa3s.arthur-joppart.sb.uclllabs.be"{
+	type master;
+	file "/etc/bind/zones/subzoneaesa3s.arthur-joppart.sb.uclllabs.be";
+	notify yes;
+};

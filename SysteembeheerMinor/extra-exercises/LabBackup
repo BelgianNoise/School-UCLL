@@ -1,0 +1,43 @@
+REMOTE REMOTE REMOTE REMOTE REMOTE REMOTE REMOTE
+apt install rsync
+vim script 
+"
+#!/bin/bash
+rsync -vzaP -e "ssh -p 22345" root@193.191.177.IPIPIP:/etc ~/Backup-school/
+"
+chmod +x script
+crontab -e
+onder aan de file: "00 02 * * * /etc/backup/script" voert om 02:00 de backup uit
+
+LOCAL LOCAL LOCAL LOCAL LOCAL LOCAL LOCAL LOCAL LOCAL LOCAL LOCAL LOCAL LOCAL
+
+cd /etc
+mkdir scripts
+cd scripts
+vim backup.sh
+
+gooi daar deze troep in:
+#!/bin/bash
+
+mkdir -p /var/backups/inotify
+if echo $1 | grep -qE "\..*\.swp$" ; then #for vim users:)
+        exit 0
+fi
+cp -p --parents $1  /var/backups/inotify
+mv /var/backups/inotify$1 /var/backups/inotify$1_$(date +'%Y.%m.%d_%H:%M:%S')
+
+
+chmod +x backup.sh
+vim incron_config.sh
+
+gooi daar deze troep in:
+#!/bin/bash
+find /etc -type d ! -regex '.*/.git.*' -print0 | xargs -0 -I{} echo "{} IN_CLOSE_WRITE /etc/scripts/backup.sh \$@/\$#" > /etc/incron.d/etc.conf
+
+
+chmod 700 incron_config.sh
+sudo apt-get install incron
+crontab -e
+voeg dit toe aan die file:
+#config every 15 minutes 
+  */15 * * * * /etc/scripts/incron_config.sh
